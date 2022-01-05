@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_code"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        android:textColor="#707070"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="인증코드를 입력해주세요."/>
+
+    <TextView
+        android:id="@+id/tv_code_input"
+        android:layout_centerHorizontal="true"
+        android:textSize="12sp"
+        android:textColor="#707070"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tv_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학교에서 발급받은 코드를 입력해주세요."/>
+
+
+
+        <FrameLayout
+            android:id="@+id/fl_code"
+            android:layout_marginTop="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_code_input"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_code"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/sign_up_edit"
+                android:padding="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_code_check"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/id_check_btn"
+                android:layout_gravity="end|center_vertical"
+                android:textStyle="bold"
+                android:text="···"/>
+
+        </FrameLayout>
+
+</RelativeLayout>
+
+
+
+
+
