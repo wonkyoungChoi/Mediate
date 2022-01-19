@@ -1,4 +1,4 @@
-package com.wk.mediate
+package com.wk.mediate.ui.Register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,16 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wk.mediate.databinding.FragmentRegisterBinding
+import com.wk.mediate.databinding.FragmentRegisterCodeBinding
 
-class RegisterFragment : Fragment(){
-    private var _viewBinding: FragmentRegisterBinding? = null
+class RegisterCodeFragment : Fragment() {
+    private var _viewBinding: FragmentRegisterCodeBinding? = null
     private val viewBinding get() = _viewBinding!!
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _viewBinding = FragmentRegisterBinding.inflate(inflater, container, false)
+        _viewBinding = FragmentRegisterCodeBinding.inflate(inflater, container, false)
+
 
         return viewBinding.root
     }

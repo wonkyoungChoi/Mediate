@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Mediate</string>
+    <string name="title">내 주변 <font color='#0070FF'>튜터&amp;튜티</font>\n만나보러 갈까요??</string>
+    <string name="look"><u>보기</u></string>
+    <string name="hide"><u>숨기기</u></string>
+    <string name="check_id">아이디를 입력해주세요</string>
+    <string name="check_password">비밀번호를 입력해주세요</string>
+    <string name="check_register">가입이력이 없습니다. 회원가입을 진행해주세요</string>
+    <string name="check_login">아이디와 비밀번호가 다릅니다. 확인 후 시도해주세요.</string>
+    <string name="remember_id">로그인 상태 유지</string>
+    <string name="login">로그인하기</string>
+    <string name="find_id">아이디 찾기</string>
+    <string name="reset_password">비밀번호 재설정</string>
+    <string name="register">회원가입</string>
+    <string name="auth">본인인증</string>
+    <string name="auth_text">계정 도용을 막기 위한 본인 인증 절차입니다.</string>
+    <string name="send_auth"><u>인증번호 보내기</u></string>
+    <string name="resend_auth"><u>인증번호가 안오나요?</u></string>
+    <string name="auth_check_all">전체 동의</string>
+    <string name="auth_check1">개인정보 수집 이용에 대한 동의<font color='#0070FF'>*</font></string>
+    <string name="auth_check2">고유식별번호의 수집 이용에 대한 동의<font color='#0070FF'>*</font></string>
+    <string name="auth_check3">통신사 이용약관 동의<font color='#0070FF'>*</font></string>
+    <string name="auth_check4">본인인증 서비스 이용 동의<font color='#0070FF'>*</font></string>
+    <string name="select_type">튜터/튜티 선택</string>
+
 </resources>

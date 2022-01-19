@@ -1,4 +1,4 @@
-package com.wk.mediate
+package com.wk.mediate.ui.Register
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

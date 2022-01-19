@@ -1,9 +1,8 @@
-package com.wk.mediate
+package com.wk.mediate.ui.Register
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
+import com.wk.mediate.Register.RegisterFragment
 import com.wk.mediate.databinding.ActivityRegisterMainBinding
 
 class RegisterMainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.wk.mediate
+package com.wk.mediate.ui.Register
 
 import android.os.Bundle
 import android.view.LayoutInflater

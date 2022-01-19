@@ -42,7 +42,7 @@
             android:textSize="12sp"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/sign_up_edit"
+            android:background="@drawable/register_next_inactive"
             android:padding="10dp"
             android:inputType="textPassword" />
 
@@ -59,7 +59,7 @@
                 android:textSize="12sp"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:padding="10dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/fl_id"
-            android:background="@drawable/sign_up_edit"
+            android:background="@drawable/register_next_inactive"
             android:layout_marginTop="30dp"
             android:padding="10dp"
             android:inputType="textPassword" />
@@ -124,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/et_password"
-            android:background="@drawable/sign_up_edit"
+            android:background="@drawable/register_next_inactive"
             android:layout_marginTop="25dp"
             android:padding="10dp"
             android:inputType="textPassword" />
@@ -174,7 +174,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="55dp"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:inputType="number" />
@@ -184,7 +184,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="55dp"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:inputType="number" />
@@ -194,7 +194,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="55dp"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:inputType="number" />
@@ -223,7 +223,7 @@
                     android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:background="@drawable/sign_up_edit"
+                    android:background="@drawable/register_next_inactive"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:inputType="number" />

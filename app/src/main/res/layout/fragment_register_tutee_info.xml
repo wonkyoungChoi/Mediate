@@ -69,7 +69,7 @@
                 android:gravity="start|center_vertical"
                 android:textStyle="bold"
                 android:textColor="#707070"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:padding="20dp"/>
             <TextView
                 android:layout_gravity="center_vertical"
@@ -100,7 +100,7 @@
                 android:textStyle="bold"
                 android:gravity="start|center_vertical"
                 android:textColor="#707070"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:padding="20dp"/>
             <TextView
                 android:layout_gravity="center_vertical"
@@ -130,7 +130,7 @@
                 android:textStyle="bold"
                 android:gravity="start|center_vertical"
                 android:textColor="#707070"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:padding="20dp"/>
             <TextView
                 android:layout_gravity="center_vertical"

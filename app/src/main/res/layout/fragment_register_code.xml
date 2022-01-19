@@ -45,7 +45,7 @@
                 android:textSize="12sp"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/sign_up_edit"
+                android:background="@drawable/register_next_inactive"
                 android:padding="10dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
