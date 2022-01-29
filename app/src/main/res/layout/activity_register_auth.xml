@@ -94,10 +94,12 @@
         app:layout_constraintEnd_toEndOf="@+id/et_phone_num"
         app:layout_constraintTop_toTopOf="@+id/et_phone_num" />
 
+
+
     <EditText
         android:id="@+id/et_input_auth_inactive"
         android:background="@drawable/register_input_auth_inactive"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
@@ -105,22 +107,48 @@
         android:clickable="false"
         android:focusable="false"
         android:padding="10dp"
+        android:textSize="14sp"
+        android:textColorHint="@color/text_grey"
         android:hint="인증번호 입력"
+        app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_phone_num" />
+        app:layout_constraintEnd_toStartOf="@id/bt_auth_check_inactive"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone_num"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_auth_check_inactive"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/register_input_auth_inactive"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="확인"
+        android:textColor="@color/text_grey"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_input_auth_inactive"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone_num"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:id="@+id/et_input_auth_active"
         android:background="@drawable/login_edit_change"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
-        android:visibility="gone"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:padding="10dp"
+        android:textSize="14sp"
+        android:textColorHint="@color/text_grey"
         android:hint="인증번호 입력"
+        android:visibility="gone"
+        app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bt_auth_check_active"
         app:layout_constraintTop_toBottomOf="@+id/et_phone_num" />
 
     <TextView
@@ -135,6 +163,23 @@
         app:layout_constraintBottom_toBottomOf="@+id/et_input_auth_active"
         app:layout_constraintEnd_toEndOf="@+id/et_input_auth_active"
         app:layout_constraintTop_toTopOf="@+id/et_input_auth_active" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_auth_check_active"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/register_input_auth_active"
+        android:visibility="gone"
+        android:text="확인"
+        android:textColor="@color/text_grey"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_input_auth_active"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone_num"
+        android:layout_marginRight="10dp" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

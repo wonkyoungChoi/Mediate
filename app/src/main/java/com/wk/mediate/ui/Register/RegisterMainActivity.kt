@@ -26,7 +26,6 @@ class RegisterMainActivity : AppCompatActivity() {
 
         // 3개의 Fragment Add
         pagerAdapter.addFragment(RegisterFragment())
-        pagerAdapter.addFragment(RegisterSelectTypeFragment())
         pagerAdapter.addFragment(RegisterCodeFragment())
         pagerAdapter.addFragment(RegisterTutorInfoFragment())
         pagerAdapter.addFragment(RegisterTutorInfo2Fragment())

@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".ui.Register.RegisterMainActivity"/>
         <activity android:name=".ui.Register.RegisterAuthActivity"/>
+        <activity android:name=".ui.Register.RegisterSelectTypeActivity"/>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.wk.mediate.ui.Register
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -56,6 +57,17 @@ class RegisterAuthActivity : AppCompatActivity() {
             sendAuth(binding.etName, binding.etPhoneNum, agreementCheck, it.context)
         }
 
+        binding.btAuthCheckActive.setOnClickListener {
+            verifyCode(binding.etInputAuthActive.text.toString())
+        }
+
+        binding.btNextActive.setOnClickListener {
+            val intent = Intent(this, RegisterSelectTypeActivity::class.java)
+            intent.putExtra("name", binding.etName.text.toString())
+            startActivity(intent)
+            finish()
+        }
+
     }
 
 
@@ -101,6 +113,8 @@ class RegisterAuthActivity : AppCompatActivity() {
             binding.tvResendAuth.visibility = View.VISIBLE
             binding.etInputAuthActive.visibility = View.VISIBLE
             binding.etInputAuthInactive.visibility = View.INVISIBLE
+            binding.btAuthCheckInactive.visibility = View.GONE
+            binding.btAuthCheckActive.visibility = View.VISIBLE
 
 
             Toast.makeText(context, "인증번호가 전송되었습니다. 2분 이내에 입력해주세요.", Toast.LENGTH_SHORT).show()
