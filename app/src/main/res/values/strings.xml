@@ -5,8 +5,8 @@
     <string name="hide"><u>숨기기</u></string>
     <string name="check_id">아이디를 입력해주세요</string>
     <string name="check_password">비밀번호를 입력해주세요</string>
-    <string name="check_register">가입이력이 없습니다. 회원가입을 진행해주세요</string>
-    <string name="check_login">아이디와 비밀번호가 다릅니다. 확인 후 시도해주세요.</string>
+    <string name="check_login">아이디 혹은 비밀번호가 다릅니다. 확인 후 시도해주세요.</string>
+    <string name="check_register">가입 이력이 없습니다 회원가입을 진행해 주세요..</string>
     <string name="remember_id">로그인 상태 유지</string>
     <string name="login">로그인하기</string>
     <string name="find_id">아이디 찾기</string>

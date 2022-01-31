@@ -1,7 +1,8 @@
-package com.wk.mediate
+package com.wk.mediate.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.wk.mediate.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

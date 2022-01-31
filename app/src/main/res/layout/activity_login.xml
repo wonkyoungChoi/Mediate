@@ -130,7 +130,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:visibility="gone"
-        android:text="@string/check_login"
+        android:text="@string/check_register"
         android:textColor="@color/red"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,12 +141,12 @@
         android:id="@+id/checkbox_remember_id"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="20dp"
         android:background="@drawable/login_checkbox"
         android:button="@null"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_input_id_check"
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
         android:layout_marginLeft="20dp" />
 
     <TextView
