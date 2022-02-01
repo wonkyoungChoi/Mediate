@@ -3,6 +3,8 @@
     <string name="title">내 주변 <font color='#0070FF'>튜터&amp;튜티</font>\n만나보러 갈까요??</string>
     <string name="look"><u>보기</u></string>
     <string name="hide"><u>숨기기</u></string>
+    <string name="id">아이디</string>
+    <string name="password">비밀번호</string>
     <string name="check_id">아이디를 입력해주세요</string>
     <string name="check_password">비밀번호를 입력해주세요</string>
     <string name="check_login">아이디 혹은 비밀번호가 다릅니다. 확인 후 시도해주세요.</string>
@@ -14,6 +16,9 @@
     <string name="register">회원가입</string>
     <string name="auth">본인인증</string>
     <string name="auth_text">계정 도용을 막기 위한 본인 인증 절차입니다.</string>
+    <string name="name">이름</string>
+    <string name="phone_num">휴대폰 번호(\'-\'없이)</string>
+    <string name="input_auth">인증번호 입력</string>
     <string name="send_auth"><u>인증번호 보내기</u></string>
     <string name="resend_auth"><u>인증번호가 안오나요?</u></string>
     <string name="auth_check_all">전체 동의</string>
@@ -27,5 +32,9 @@
     <string name="select_type_tutee">초/중/고 튜티</string>
     <string name="select_type_tutor_info">대학교에서 인증받은 튜터입니다.</string>
     <string name="select_type_tutee_info">튜터링을 원하는 튜티입니다.</string>
+    <string name="input_code">인증코드 입력</string>
+    <string name="input_code_hint">인증코드 6자리</string>
+    <string name="input_code_question">학교 내부 인증코드를\n입력해주세요!</string>
+    <string name="code_info"><u>학교 내부 인증 코드가 뭔가요?</u></string>
 
 </resources>

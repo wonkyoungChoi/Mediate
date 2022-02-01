@@ -42,7 +42,6 @@ class LoginRepository {
 
             override fun onFailure(call: Call<LoginResult>, t: Throwable) {
                 TODO("Not yet implemented")
-                t.printStackTrace()
             }
         })
     }

@@ -50,10 +50,23 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:padding="10dp"
-        android:hint="이름"
+        android:paddingTop="19dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textSize="11sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/text_grey"
+        app:layout_constraintStart_toStartOf="@+id/et_name"
+        app:layout_constraintTop_toTopOf="@+id/et_name"
+        android:layout_marginLeft="16dp" />
 
     <EditText
         android:id="@+id/et_phone_num"
@@ -63,10 +76,24 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:padding="10dp"
-        android:hint="휴대폰 번호('-'없이)"
+        android:inputType="phone"
+        android:paddingTop="19dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_num"
+        android:textSize="11sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/text_grey"
+        app:layout_constraintStart_toStartOf="@+id/et_phone_num"
+        app:layout_constraintTop_toTopOf="@+id/et_phone_num"
+        android:layout_marginLeft="16dp" />
 
 
     <TextView
@@ -93,7 +120,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/et_phone_num"
         app:layout_constraintEnd_toEndOf="@+id/et_phone_num"
         app:layout_constraintTop_toTopOf="@+id/et_phone_num" />
-
 
 
     <EditText
@@ -141,15 +167,30 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:padding="10dp"
+        android:paddingTop="19dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:textSize="14sp"
         android:textColorHint="@color/text_grey"
-        android:hint="인증번호 입력"
         android:visibility="gone"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/bt_auth_check_active"
         app:layout_constraintTop_toBottomOf="@+id/et_phone_num" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_auth"
+        android:textSize="11sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:visibility="gone"
+        android:textColor="@color/text_grey"
+        app:layout_constraintStart_toStartOf="@+id/et_input_auth_active"
+        app:layout_constraintTop_toTopOf="@+id/et_input_auth_active"
+        android:layout_marginLeft="16dp" />
+
 
     <TextView
         android:id="@+id/tv_time_limit"

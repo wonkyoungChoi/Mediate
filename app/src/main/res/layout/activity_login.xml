@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="20dp" />
 
 
     <EditText
@@ -29,13 +30,26 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/login_edit_change"
-        android:hint="아이디"
-        android:padding="10dp"
-        android:textSize="12sp"
+        android:textSize="16sp"
+        android:paddingTop="19dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id"
+        android:textSize="11sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/text_grey"
+        app:layout_constraintStart_toStartOf="@+id/et_id"
+        app:layout_constraintTop_toTopOf="@+id/et_id"
+        android:layout_marginLeft="16dp" />
 
     <EditText
         android:id="@+id/et_password"
@@ -45,14 +59,26 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/login_edit_change"
-        android:hint="비밀번호"
         android:inputType="textPassword"
-        android:padding="10dp"
-        android:textSize="12sp"
+        android:textSize="16sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_id" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textSize="11sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/text_grey"
+        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintTop_toTopOf="@+id/et_password"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:id="@+id/tv_look"

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Mediate"
         tools:targetApi="m">
 
-        <activity android:name=".ui.Login.LoginActivity">
+        <activity android:name=".ui.Register.RegisterInputCodeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +23,7 @@
         <activity android:name=".ui.Register.RegisterMainActivity"/>
         <activity android:name=".ui.Register.RegisterAuthActivity"/>
         <activity android:name=".ui.Register.RegisterSelectTypeActivity"/>
+        <activity android:name=".ui.Login.LoginActivity"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
