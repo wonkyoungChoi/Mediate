@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.wk.mediate.databinding.ActivityLoginBinding
-import com.wk.mediate.ui.Register.RegisterAuthActivity
+import com.wk.mediate.ui.Register.AuthActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -125,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
 
         //회원가입 하기
         binding.tvRegister.setOnClickListener {
-            intentActivity(it.context, RegisterAuthActivity::class.java)
+            intentActivity(it.context, AuthActivity::class.java)
         }
     }
 

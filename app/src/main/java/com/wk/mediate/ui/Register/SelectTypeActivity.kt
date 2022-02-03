@@ -1,5 +1,6 @@
 package com.wk.mediate.ui.Register
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,21 +10,27 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.wk.mediate.R
-import com.wk.mediate.databinding.ActivityRegisterSelectTypeBinding
+import com.wk.mediate.databinding.ActivitySelectTypeBinding
 
-class RegisterSelectTypeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterSelectTypeBinding
+class SelectTypeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySelectTypeBinding
     private var check : Boolean = false
     private var selectNum : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterSelectTypeBinding.inflate(layoutInflater)
+        binding = ActivitySelectTypeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.tvName.text = intent.getStringExtra("name")
 
         selectClick()
+
+        binding.btNextActive.setOnClickListener {
+            val intent = Intent(this, InputCodeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 

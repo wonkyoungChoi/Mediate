@@ -11,16 +11,15 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doOnTextChanged
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
-import com.wk.mediate.databinding.ActivityRegisterAuthBinding
+import com.wk.mediate.databinding.ActivityAuthBinding
 import java.util.concurrent.TimeUnit
 
-class RegisterAuthActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterAuthBinding
+class AuthActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAuthBinding
     private lateinit var timer : CountDownTimer
     private lateinit var phone : String
     private lateinit var verificationId : String
@@ -31,7 +30,7 @@ class RegisterAuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterAuthBinding.inflate(layoutInflater)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         authCodeTimer()
@@ -62,7 +61,7 @@ class RegisterAuthActivity : AppCompatActivity() {
         }
 
         binding.btNextActive.setOnClickListener {
-            val intent = Intent(this, RegisterSelectTypeActivity::class.java)
+            val intent = Intent(this, SelectTypeActivity::class.java)
             intent.putExtra("name", binding.etName.text.toString())
             startActivity(intent)
             finish()

@@ -2,16 +2,18 @@ package com.wk.mediate.ui.Register
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.wk.mediate.databinding.ActivityInputCodeBinding
 
-class RegisterInputCodeActivity : AppCompatActivity() {
+class InputCodeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputCodeBinding
 
 
@@ -22,6 +24,19 @@ class RegisterInputCodeActivity : AppCompatActivity() {
 
         editTextWatcher()
         focusableCode()
+
+        binding.btNextActive.setOnClickListener {
+            //코드 검증 해야함
+            if(true) {
+            val intent = Intent(this, InputIdPasswordActivity::class.java)
+            startActivity(intent)
+            finish()
+            } else {
+                binding.tvInputCodeCheck.visibility = View.VISIBLE
+                binding.tvCodeInfo.setMarginTop(70)
+            }
+
+        }
 
     }
 
@@ -59,4 +74,11 @@ class RegisterInputCodeActivity : AppCompatActivity() {
 
         })
     }
+
+    private fun View.setMarginTop(topMargin: Int) {
+        val params = layoutParams as ViewGroup.MarginLayoutParams
+        params.setMargins(params.leftMargin, topMargin, params.rightMargin, params.bottomMargin)
+        layoutParams = params
+    }
+
 }

@@ -2,7 +2,6 @@ package com.wk.mediate.ui.Register
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.wk.mediate.Register.RegisterFragment
 import com.wk.mediate.databinding.ActivityRegisterMainBinding
 
 class RegisterMainActivity : AppCompatActivity() {
@@ -25,8 +24,6 @@ class RegisterMainActivity : AppCompatActivity() {
         val pagerAdapter = RegisterPagerAdapter(this)
 
         // 3개의 Fragment Add
-        pagerAdapter.addFragment(RegisterFragment())
-        pagerAdapter.addFragment(RegisterCodeFragment())
         pagerAdapter.addFragment(RegisterTutorInfoFragment())
         pagerAdapter.addFragment(RegisterTutorInfo2Fragment())
         pagerAdapter.addFragment(RegisterFinishFragment())
