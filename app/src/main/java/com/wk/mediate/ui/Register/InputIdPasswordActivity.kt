@@ -13,7 +13,10 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.wk.mediate.R
 import com.wk.mediate.databinding.ActivityInputIdPasswordBinding
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class InputIdPasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputIdPasswordBinding
@@ -25,57 +28,50 @@ class InputIdPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //editTextWatcher()
-        focusableEditText(binding.etId, binding.tvHintInputId, "아이디")
-        focusableEditText(binding.etPassword, binding.tvHintInputPassword, "비밀번호")
-        focusableEditText(binding.etPasswordCheck, binding.tvHintInputPasswordCheck, "비밀번호 재입력")
+        focusableEditText(binding.etId, binding.tvHintInputId, getString(R.string.input_id_hint),"아이디")
+        focusableEditText(binding.etPassword, binding.tvHintInputPassword, getString(R.string.input_password_hint),"비밀번호")
+        focusableEditText(binding.etPasswordCheck, binding.tvHintInputPasswordCheck, getString(R.string.input_password_hint), "비밀번호 재입력")
 
-        etWatcher(binding.etPassword, true, binding.passwordCheck)
-        etWatcher(binding.etPasswordCheck, true, binding.passwordReCheck)
+//        etPasswordWatcher(binding.etPassword, binding.passwordCheck)
+//        etPasswordCheckWatcher(binding.etPasswordCheck, binding.passwordReCheck)
 
         binding.btNextActive.setOnClickListener {
-            //코드 검증 해야함
-            if(true) {
-                val intent = Intent(this, SelectTypeActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                binding.tvInputCodeCheck.visibility = View.VISIBLE
-                binding.tvCodeInfo.setMarginTop(70)
-            }
-
+            val intent = Intent(this, SelectTypeActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
 
-    private fun focusableEditText(et: EditText, tv: TextView, text: String) {
+    private fun focusableEditText(et: EditText, tv: TextView, focusText: String, unFocusText: String) {
         Log.d("test","test")
         et.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus) {
-                Log.d("test","test")
                 et.setPadding(50, 22, 50, 0)
+                tv.text = focusText
                 tv.visibility = View.VISIBLE
                 et.hint = ""
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.showSoftInput(et, 0)
             } else if(!hasFocus && et.text.isNotEmpty()){
-                tv.text = text
+                tv.text = unFocusText
                 et.setPadding(50, 22, 50, 0)
             } else {
                 tv.visibility = View.GONE
-                et.hint = text
+                et.hint = unFocusText
                 et.setPadding(50, 18, 50, 18)
             }
         }
     }
 
-    private fun etWatcher(et: EditText, bool: Boolean, iv: ImageView) {
+    private fun etPasswordWatcher(et: EditText, bool: Boolean, iv: ImageView) {
         et.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                //비밀번호 조건 충족 요건 설정해야함
+
                 if(bool) {
                    iv.visibility = View.VISIBLE
                 } else {
@@ -84,17 +80,48 @@ class InputIdPasswordActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                //비밀번호 조건 충족 요건 설정해야함
-                if(bool) {
+
+            }
+        })
+    }
+
+    private fun etPasswordCheckWatcher(et: EditText, iv: ImageView) {
+        et.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(passwordCheckValidation(binding.etPassword.text.toString(), binding.etPasswordCheck.text.toString())) {
                     iv.visibility = View.VISIBLE
                 } else {
                     iv.visibility = View.GONE
                 }
             }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
         })
     }
 
+    private fun passwordValidation(password: String): Boolean {
+        Log.d("validation", "validation")
+        val valSymbol = "([0-9].*[!,@,#,^,&,*,(,)])|([!,@,#,^,&,*,(,)].*[0-9])";
+        val valAlpha = "([a-z].*[A-Z])|([A-Z].*[a-z])";
 
+        val patternSymbol : Pattern  = Pattern.compile(valSymbol)
+        val patternAlpha : Pattern = Pattern.compile(valAlpha);
+
+        val matcherSymbol : Matcher = patternSymbol.matcher(password);
+        val matcherAlpha : Matcher = patternAlpha.matcher(password);
+
+        return matcherSymbol.find() && matcherAlpha.find()
+    }
+
+    private fun passwordCheckValidation(password: String, passwordCheck: String): Boolean {
+        return password == passwordCheck
+    }
 
     private fun View.setMarginTop(topMargin: Int) {
         val params = layoutParams as ViewGroup.MarginLayoutParams
