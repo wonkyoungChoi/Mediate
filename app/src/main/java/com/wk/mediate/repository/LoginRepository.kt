@@ -28,6 +28,7 @@ class LoginRepository {
 
         call.enqueue(object : Callback<LoginResult> {
             override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
+                Log.d("responseCode", response.code().toString())
                 when (response.code()) {
                     400 -> {
                         val jsonArray: JSONArray = JSONObject(response.errorBody()!!.string()).getJSONArray("message")
@@ -41,7 +42,7 @@ class LoginRepository {
             }
 
             override fun onFailure(call: Call<LoginResult>, t: Throwable) {
-                TODO("Not yet implemented")
+                 t.printStackTrace()
             }
         })
     }
