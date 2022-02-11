@@ -10,7 +10,10 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.wk.mediate.R
 import com.wk.mediate.databinding.ActivityInputCodeBinding
 
 class InputCodeActivity : AppCompatActivity() {
@@ -23,7 +26,7 @@ class InputCodeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         editTextWatcher()
-        focusableCode()
+        focusableEditText(binding.etCode, binding.tvHintInputCode, getString(R.string.input_code_hint))
 
         binding.btNextActive.setOnClickListener {
             //코드 검증 해야함
@@ -40,16 +43,23 @@ class InputCodeActivity : AppCompatActivity() {
 
     }
 
-    private fun focusableCode() {
+    private fun focusableEditText(et: EditText, tv: TextView, focusText: String) {
         Log.d("test","test")
-        binding.etCode.setOnFocusChangeListener { v, hasFocus ->
+        et.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus) {
-                Log.d("test","test")
-                binding.etCode.setPadding(50, 22, 50, 0)
-                binding.tvHintInputCode.visibility = View.VISIBLE
-                binding.etCode.hint = ""
+                et.setPadding(50, 22, 50, 0)
+                tv.text = focusText
+                tv.visibility = View.VISIBLE
+                et.hint = ""
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.showSoftInput(binding.etCode, 0)
+                imm.showSoftInput(et, 0)
+            } else if(!hasFocus && et.text.isNotEmpty()){
+                tv.text = focusText
+                et.setPadding(50, 22, 50, 0)
+            } else {
+                tv.visibility = View.GONE
+                et.hint = focusText
+                et.setPadding(50, 18, 50, 18)
             }
         }
     }

@@ -141,7 +141,7 @@
         android:padding="10dp"
         android:textSize="14sp"
         android:textColorHint="@color/text_grey"
-        android:hint="인증번호 입력"
+        android:hint="@string/input_auth"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/bt_auth_check_inactive"
@@ -173,9 +173,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:paddingTop="19dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:hint="@string/input_auth"
         android:textSize="14sp"
         android:textColorHint="@color/text_grey"
         android:visibility="gone"
@@ -185,6 +183,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_phone_num" />
 
     <TextView
+        android:id="@+id/tv_hint_input_auth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/input_auth"

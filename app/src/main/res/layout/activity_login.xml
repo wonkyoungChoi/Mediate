@@ -31,7 +31,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/login_edit_change"
         android:hint="@string/id"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
 
     <TextView
+        android:id="@+id/tv_hint_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/id"
@@ -62,7 +63,7 @@
         android:background="@drawable/login_edit_change"
         android:inputType="textPassword"
         android:hint="@string/password"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_id" />
 
     <TextView
+        android:id="@+id/tv_hint_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password"

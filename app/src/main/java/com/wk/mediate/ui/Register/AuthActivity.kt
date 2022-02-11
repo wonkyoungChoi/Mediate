@@ -7,14 +7,17 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.wk.mediate.R
 import com.wk.mediate.databinding.ActivityAuthBinding
 import java.util.concurrent.TimeUnit
 
@@ -32,6 +35,9 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        focusableEditText(binding.etName, binding.tvHintName,  getString(R.string.name))
+        focusableEditText(binding.etPhoneNum, binding.tvHintPhoneNum, getString(R.string.phone_num))
 
         authCodeTimer()
 
@@ -67,6 +73,27 @@ class AuthActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    private fun focusableEditText(et: EditText, tv: TextView, focusText: String) {
+        Log.d("test","test")
+        et.setOnFocusChangeListener { _, hasFocus ->
+            if(hasFocus) {
+                et.setPadding(50, 22, 50, 0)
+                tv.text = focusText
+                tv.visibility = View.VISIBLE
+                et.hint = ""
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(et, 0)
+            } else if(!hasFocus && et.text.isNotEmpty()){
+                tv.text = focusText
+                et.setPadding(50, 22, 50, 0)
+            } else {
+                tv.visibility = View.GONE
+                et.hint = focusText
+                et.setPadding(50, 18, 50, 18)
+            }
+        }
     }
 
 
@@ -114,7 +141,7 @@ class AuthActivity : AppCompatActivity() {
             binding.etInputAuthInactive.visibility = View.INVISIBLE
             binding.btAuthCheckInactive.visibility = View.GONE
             binding.btAuthCheckActive.visibility = View.VISIBLE
-
+            focusableEditText(binding.etInputAuthActive, binding.tvHintInputAuth, getString(R.string.input_auth))
 
             Toast.makeText(context, "인증번호가 전송되었습니다. 2분 이내에 입력해주세요.", Toast.LENGTH_SHORT).show()
         } else if(et_name.text.isEmpty()) {

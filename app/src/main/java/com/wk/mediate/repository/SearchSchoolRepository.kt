@@ -32,7 +32,8 @@ class SearchSchoolRepository {
                         Log.d("NUM", num.toString())
                         for (i in 0..num) {
                             Log.d("Add", "Add")
-                            items.add(list.schoolInfo?.get(1)?.row?.get(i)?.schulNm.toString())
+                            val item = list.schoolInfo?.get(1)?.row?.get(i)?.schulNm.toString()
+                            if(item.contains("고등")) items.add(item)
                         }
                     } catch (e: NullPointerException) {
                         items.add("검색한 학교가 없습니다.")
