@@ -17,6 +17,8 @@ class SearchSchoolRepository {
     fun loadSchoolResult(search: String) {
         val call = SchoolApi.createApi().loadSchool(BuildConfig.SCHOOL_API_KEY,"json", search)
         Log.d("LoadURL", call.request().url().toString())
+
+
         //Authorization
 
         call.enqueue(object : Callback<SearchSchoolResult> {
