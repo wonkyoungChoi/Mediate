@@ -18,9 +18,6 @@ class SearchSchoolRepository {
         val call = SchoolApi.createApi().loadSchool(BuildConfig.SCHOOL_API_KEY,"json", search)
         Log.d("LoadURL", call.request().url().toString())
 
-
-        //Authorization
-
         call.enqueue(object : Callback<SearchSchoolResult> {
             override fun onResponse(call: Call<SearchSchoolResult>, response: Response<SearchSchoolResult>) {
                 val items = ArrayList<String>()
