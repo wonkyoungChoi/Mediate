@@ -18,6 +18,9 @@ import com.wk.mediate.databinding.ActivityInputCodeBinding
 
 class InputCodeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputCodeBinding
+    private val name : String? = intent.getStringExtra("name")
+    private val phoneNum : String? = intent.getStringExtra("phoneNum")
+    private val type : String? = intent.getStringExtra("type")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,27 +30,33 @@ class InputCodeActivity : AppCompatActivity() {
 
         editTextWatcher()
         focusableEditText(binding.etCode, binding.tvHintInputCode, getString(R.string.input_code_hint))
+        onClick()
 
+    }
+
+    private fun onClick() {
+        //다음 버튼 클릭
         binding.btNextActive.setOnClickListener {
             //코드 검증 해야함
             if(true) {
-            val intent = Intent(this, InputIdPasswordActivity::class.java)
-            startActivity(intent)
-            finish()
+                val intent = Intent(this, InputIdPasswordActivity::class.java)
+                intent.putExtra("name", name)
+                intent.putExtra("phoneNum", phoneNum)
+                intent.putExtra("type", type)
+                startActivity(intent)
+                finish()
             } else {
                 binding.tvInputCodeCheck.visibility = View.VISIBLE
                 binding.tvCodeInfo.setMarginTop(70)
             }
-
         }
-
     }
 
     private fun focusableEditText(et: EditText, tv: TextView, focusText: String) {
         Log.d("test","test")
         et.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus) {
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
                 tv.text = focusText
                 tv.visibility = View.VISIBLE
                 et.hint = ""
@@ -55,7 +64,7 @@ class InputCodeActivity : AppCompatActivity() {
                 imm.showSoftInput(et, 0)
             } else if(!hasFocus && et.text.isNotEmpty()){
                 tv.text = focusText
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
             } else {
                 tv.visibility = View.GONE
                 et.hint = focusText

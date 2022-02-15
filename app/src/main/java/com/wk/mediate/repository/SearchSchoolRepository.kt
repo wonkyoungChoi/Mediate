@@ -27,11 +27,10 @@ class SearchSchoolRepository {
 
                 if (list != null) {
                     try {
-                        num = if (list.schoolInfo?.get(0)?.head?.get(0)?.listTotalCount!! > 4) 4
+                        num = if (list.schoolInfo?.get(0)?.head?.get(0)?.listTotalCount!! > 20) 5
                         else list.schoolInfo?.get(0)?.head?.get(0)?.listTotalCount!! - 1
                         Log.d("NUM", num.toString())
                         for (i in 0..num) {
-                            Log.d("Add", "Add")
                             val item = list.schoolInfo?.get(1)?.row?.get(i)?.schulNm.toString()
                             if(item.contains("고등")) items.add(item)
                         }

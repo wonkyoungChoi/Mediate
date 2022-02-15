@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         Log.d("test","test")
         et.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus) {
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
                 tv.text = focusText
                 tv.visibility = View.VISIBLE
                 et.hint = ""
@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
                 imm.showSoftInput(et, 0)
             } else if(!hasFocus && et.text.isNotEmpty()){
                 tv.text = focusText
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
             } else {
                 tv.visibility = View.GONE
                 et.hint = focusText

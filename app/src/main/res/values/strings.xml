@@ -27,7 +27,8 @@
     <string name="auth_check3">통신사 이용약관 동의<font color='#0070FF'>*</font></string>
     <string name="auth_check4">본인인증 서비스 이용 동의<font color='#0070FF'>*</font></string>
     <string name="select_type">튜터/튜티 선택</string>
-    <string name="select_type_question">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;님은\n튜터인가요, 튜티인가요?</string>
+    <string name="select_type_question1">님은</string>
+    <string name="select_type_question2">튜터인가요, 튜티인가요?</string>
     <string name="select_type_tutor">대학생 튜터</string>
     <string name="select_type_tutee">초/중/고 튜티</string>
     <string name="select_type_tutor_info">대학교에서 인증받은 튜터입니다.</string>
@@ -43,6 +44,7 @@
     <string name="input_id_hint">6~12자 영문,숫자로 입력해 주세요</string>
     <string name="input_password_hint">영문 대소문자, 숫자, 특수문자를 혼합해 주세요</string>
     <string name="input_re_password_hint">비밀번호를 다시 입력해 주세요</string>
+    <string name="search_school">학교/학년 입력</string>
 
 
 </resources>

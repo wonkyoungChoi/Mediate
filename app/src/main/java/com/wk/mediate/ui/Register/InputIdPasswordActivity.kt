@@ -20,9 +20,9 @@ import java.util.regex.Pattern
 
 class InputIdPasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputIdPasswordBinding
-    private var idCheck: Boolean = false
-    private var passwordCheck: Boolean = false
-    private var rePasswordCheck: Boolean = false
+    private val name : String? = intent.getStringExtra("name")
+    private val phoneNum : String? = intent.getStringExtra("phoneNum")
+    private val type : String? = intent.getStringExtra("type")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +36,11 @@ class InputIdPasswordActivity : AppCompatActivity() {
         etPasswordWatcher(binding.etPassword, binding.passwordCheck)
         etPasswordCheckWatcher(binding.etPasswordCheck, binding.passwordReCheck)
 
+        onClick()
+    }
+
+    private fun onClick() {
+        //다음 버튼 클릭
         binding.btNextActive.setOnClickListener {
             val intent = Intent(this, SelectTypeActivity::class.java)
             startActivity(intent)
@@ -47,7 +52,7 @@ class InputIdPasswordActivity : AppCompatActivity() {
         Log.d("test","test")
         et.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus) {
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
                 tv.text = focusText
                 tv.visibility = View.VISIBLE
                 et.hint = ""
@@ -55,7 +60,7 @@ class InputIdPasswordActivity : AppCompatActivity() {
                 imm.showSoftInput(et, 0)
             } else if(!hasFocus && et.text.isNotEmpty()){
                 tv.text = unFocusText
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
             } else {
                 tv.visibility = View.GONE
                 et.hint = unFocusText

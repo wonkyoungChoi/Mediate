@@ -41,6 +41,17 @@ class AuthActivity : AppCompatActivity() {
 
         authCodeTimer()
 
+        checkboxSet(binding.checkbox1)
+        checkboxSet(binding.checkbox2)
+        checkboxSet(binding.checkbox3)
+        checkboxSet(binding.checkbox4)
+
+        onClick()
+
+    }
+
+    private fun onClick() {
+        //체크박스 전체동의 클릭
         binding.checkboxAll.setOnClickListener {
             if(binding.checkboxAll.isChecked) {
                 checkboxAllSet(true)
@@ -49,37 +60,39 @@ class AuthActivity : AppCompatActivity() {
             }
         }
 
-        checkboxSet(binding.checkbox1)
-        checkboxSet(binding.checkbox2)
-        checkboxSet(binding.checkbox3)
-        checkboxSet(binding.checkbox4)
-
+        //인증번호 보내기 클릭
         binding.tvSendAuth.setOnClickListener{
             sendAuth(binding.etName, binding.etPhoneNum, agreementCheck, it.context)
         }
 
+        //인증번호 재전송 클릭
         binding.tvResendAuth.setOnClickListener{
             sendAuth(binding.etName, binding.etPhoneNum, agreementCheck, it.context)
         }
 
+        //인증번호 체크 클릭
         binding.btAuthCheckActive.setOnClickListener {
             verifyCode(binding.etInputAuthActive.text.toString())
         }
 
+
+        //다음버튼 클릭릭
         binding.btNextActive.setOnClickListener {
             val intent = Intent(this, SelectTypeActivity::class.java)
+            RegisterInfo.info?.name = binding.etName.text.toString()
+            RegisterInfo.info?.phoneNum = binding.etPhoneNum.text.toString()
             intent.putExtra("name", binding.etName.text.toString())
+            intent.putExtra("phoneNum", binding.etPhoneNum.text.toString())
             startActivity(intent)
             finish()
         }
-
     }
 
     private fun focusableEditText(et: EditText, tv: TextView, focusText: String) {
         Log.d("test","test")
         et.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus) {
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
                 tv.text = focusText
                 tv.visibility = View.VISIBLE
                 et.hint = ""
@@ -87,7 +100,7 @@ class AuthActivity : AppCompatActivity() {
                 imm.showSoftInput(et, 0)
             } else if(!hasFocus && et.text.isNotEmpty()){
                 tv.text = focusText
-                et.setPadding(50, 22, 50, 0)
+                et.setPadding(40, 22, 40, 0)
             } else {
                 tv.visibility = View.GONE
                 et.hint = focusText
@@ -156,11 +169,11 @@ class AuthActivity : AppCompatActivity() {
 
     private fun sendVerificationCode(number: String) {
         val options: PhoneAuthOptions = PhoneAuthOptions.newBuilder(mAuth)
-            .setPhoneNumber(number) // Phone number to verify
-            .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this) // Activity (for callback binding)
-            .setCallbacks(mCallbacks) // OnVerificationStateChangedCallbacks
-            .build()
+                .setPhoneNumber(number) // Phone number to verify
+                .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
+                .setActivity(this) // Activity (for callback binding)
+                .setCallbacks(mCallbacks) // OnVerificationStateChangedCallbacks
+                .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
@@ -183,8 +196,8 @@ class AuthActivity : AppCompatActivity() {
         }
 
         override fun onCodeSent(
-            verificationid: String,
-            token: PhoneAuthProvider.ForceResendingToken
+                verificationid: String,
+                token: PhoneAuthProvider.ForceResendingToken
         ) {
             super.onCodeSent(verificationid, token)
             verificationId = verificationid
@@ -198,23 +211,23 @@ class AuthActivity : AppCompatActivity() {
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(
-                this,
-                OnCompleteListener { task: Task<AuthResult?> ->
-                    if (task.isSuccessful) {
+                .addOnCompleteListener(
+                        this,
+                        OnCompleteListener { task: Task<AuthResult?> ->
+                            if (task.isSuccessful) {
 
-                        check = true
-                        timer.cancel()
+                                check = true
+                                timer.cancel()
 
-                        binding.btNextActive.visibility = View.VISIBLE
-                        binding.btNextInactive.visibility = View.GONE
+                                binding.btNextActive.visibility = View.VISIBLE
+                                binding.btNextInactive.visibility = View.GONE
 
-                        Toast.makeText(applicationContext, "인증을 완료하였습니다.", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(applicationContext, task.exception!!.message, Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                })
+                                Toast.makeText(applicationContext, "인증을 완료하였습니다.", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(applicationContext, task.exception!!.message, Toast.LENGTH_SHORT)
+                                        .show()
+                            }
+                        })
     }
 
 

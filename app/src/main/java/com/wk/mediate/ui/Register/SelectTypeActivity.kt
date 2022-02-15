@@ -16,35 +16,46 @@ class SelectTypeActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySelectTypeBinding
     private var check : Boolean = false
     private var selectNum : Int = 0
+    private val name : String? = intent.getStringExtra("name")
+    private val phoneNum : String? = intent.getStringExtra("phoneNum")
+    private lateinit var type : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySelectTypeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvName.text = intent.getStringExtra("name")
-
-        selectClick()
-
-        binding.btNextActive.setOnClickListener {
-            val intent = Intent(this, InputCodeActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        binding.tvName.text = RegisterInfo.info?.name
+        onClick()
 
     }
 
-    private fun selectClick() {
+    private fun onClick() {
+        //튜터 선택 클릭
         binding.clSelectTutor.setOnClickListener{
             Log.d("ClickTutor", "ClickTutor")
             selectNum = 1
             checkClick(binding.clSelectTutor, binding.ivMortarboard, binding.tvSelectTypeTutor, binding.tvSelectTypeTutorInfo, binding.clSelectTutee, binding.ivSchoolbag, binding.tvSelectTypeTutee, binding.tvSelectTypeTuteeInfo)
         }
 
+        //튜티 선택 클릭
         binding.clSelectTutee.setOnClickListener{
             Log.d("ClickTutee", "ClickTutee")
             selectNum = 2
             checkClick(binding.clSelectTutee, binding.ivSchoolbag, binding.tvSelectTypeTutee, binding.tvSelectTypeTuteeInfo, binding.clSelectTutor, binding.ivMortarboard, binding.tvSelectTypeTutor, binding.tvSelectTypeTutorInfo)
+        }
+
+        //다음 버튼 클릭
+        binding.btNextActive.setOnClickListener {
+            val intent = Intent(this, InputCodeActivity::class.java)
+
+            intent.putExtra("name", name)
+            intent.putExtra("phoneNum", phoneNum)
+            type = if(selectNum == 1) "tutor"
+            else "tutee"
+            intent.putExtra("type", type)
+            startActivity(intent)
+            finish()
         }
     }
 
