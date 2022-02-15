@@ -24,7 +24,7 @@ class LoginRepository {
 
         val call = LoginApi.createApi().loadLogin(loginData)
 
-        //Authorization
+
 
         call.enqueue(object : Callback<LoginResult> {
             override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
