@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Mediate"
         tools:targetApi="m">
-        <activity android:name=".ui.Login.LoginActivity">
+        <activity android:name=".ui.Register.Search.SearchSchoolActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
         <activity android:name=".ui.Register.SelectTypeActivity"/>
         <activity android:name=".ui.Register.InputCodeActivity"/>
         <activity android:name=".ui.Register.InputIdPasswordActivity"/>
-        <activity android:name=".ui.Register.Search.SearchSchoolActivity"/>
+        <activity android:name=".ui.Login.LoginActivity"/>
     </application>
 
 
