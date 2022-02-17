@@ -40,14 +40,16 @@ class SearchSchoolActivity : AppCompatActivity() {
             binding.autoCompleteTextViewSchool.hint = "재학중인 대학교"
             binding.autoCompleteTextViewMajor.hint = "학과"
             model.loadUniversity("")
+            model.loadMajor("")
             observeUniversitySearchResult()
+            observeMajorSearchResult()
+            majorTextWatcher()
         } else {
             binding.autoCompleteTextViewSchool.hint = "재학중인 학교"
             binding.autoCompleteTextViewMajor.visibility = View.GONE
             model.loadSchool("")
             observeSchoolSearchResult()
         }
-
 
         schoolTextWatcher(type)
         initGradeSpinner(type)
@@ -72,6 +74,15 @@ class SearchSchoolActivity : AppCompatActivity() {
         })
     }
 
+    private fun observeMajorSearchResult() {
+        model.getMajorResult().observe(this, {
+            Log.d("Observe", it[0])
+            val adapter = ArrayAdapter(this, R.layout.simple_dropdown_item_1line, it)
+            binding.autoCompleteTextViewMajor.setAdapter(adapter)
+            adapter.notifyDataSetChanged()
+        })
+    }
+
     private fun schoolTextWatcher(type: String) {
         binding.autoCompleteTextViewSchool.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -84,6 +95,22 @@ class SearchSchoolActivity : AppCompatActivity() {
                 } else {
                     model.loadSchool(binding.autoCompleteTextViewSchool.text.toString())
                 }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
+    }
+
+    private fun majorTextWatcher() {
+        binding.autoCompleteTextViewMajor.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                model.loadMajor(binding.autoCompleteTextViewMajor.text.toString())
             }
 
             override fun afterTextChanged(s: Editable?) {

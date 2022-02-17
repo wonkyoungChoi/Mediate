@@ -1,5 +1,6 @@
 package com.wk.mediate.network
 
+import com.wk.mediate.ui.Register.Search.SearchMajorResult
 import com.wk.mediate.ui.Register.Search.SearchUniversityResult
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -15,7 +16,8 @@ interface UniversityInfoService {
 
 interface MajorInfoService {
     @GET("cnet/openapi/getOpenApi/")
-    fun loadMajor()
+    fun loadMajor(@Query("apiKey") key: String, @Query("svcType") name: String, @Query("svcCode") school: String,
+                       @Query("contentType") type: String, @Query("gubun") gubun: String, @Query("searchTitle") search: String): Call<SearchMajorResult>
 }
 
 object UniversityApi {
@@ -25,8 +27,14 @@ object UniversityApi {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    fun createApi(): UniversityInfoService {
+    fun createUnivApi(): UniversityInfoService {
         return retrofit.create(
                 UniversityInfoService::class.java)
+    }
+
+    fun createMajorApi(): MajorInfoService {
+        return retrofit.create(
+                MajorInfoService::class.java
+        )
     }
 }
