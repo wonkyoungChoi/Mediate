@@ -12,4 +12,5 @@
     <color name="text_grey">#9E9E9E</color>
     <color name="red">#EF2B2A</color>
     <color name="auth_grey">#616161</color>
+    <color name="text_black">#222222</color>
 </resources>

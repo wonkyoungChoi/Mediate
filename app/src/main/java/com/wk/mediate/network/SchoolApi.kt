@@ -1,13 +1,13 @@
 package com.wk.mediate.network
 
-import com.wk.mediate.ui.Register.Search.SearchSchoolResult
+import com.wk.mediate.ui.Register.SelectInfo.School.SearchSchoolResult
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface SchoolService {
+interface SchoolInfoService {
     @POST("hub/schoolInfo")
     fun loadSchool(@Query("Key") key:String, @Query("Type") type: String, @Query("SCHUL_NM") name: String): Call<SearchSchoolResult>
 }
@@ -19,8 +19,8 @@ object SchoolApi {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    fun createApi(): SchoolService {
+    fun createApi(): SchoolInfoService {
         return retrofit.create(
-                SchoolService::class.java)
+                SchoolInfoService::class.java)
     }
 }

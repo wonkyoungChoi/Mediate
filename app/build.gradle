@@ -20,6 +20,7 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "SCHOOL_API_KEY", properties["school_api_key"]
+        buildConfigField "String", "UNIVERSITY_API_KEY", properties["university_api_key"]
     }
 
     buildTypes {

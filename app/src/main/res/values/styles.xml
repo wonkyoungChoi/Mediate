@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SpinnerDivideStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">#EEEEEE</item> <!-- divider 색 -->
+        <item name="android:dividerHeight">1dp</item> <!-- divider 높이 -->
+    </style>
+
+    <style name="SpinnerTheme" parent="Theme.AppCompat.Light">
+        <item name="android:dropDownListViewStyle">@style/SpinnerDivideStyle</item>
+    </style>
+</resources>
