@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.wk.mediate.BuildConfig
 import com.wk.mediate.network.SchoolApi
 import com.wk.mediate.network.UniversityApi
-import com.wk.mediate.ui.Register.Search.SearchMajorResult
-import com.wk.mediate.ui.Register.Search.SearchSchoolResult
-import com.wk.mediate.ui.Register.Search.SearchUniversityResult
+import com.wk.mediate.ui.Register.SelectInfo.SearchMajorResult
+import com.wk.mediate.ui.Register.SelectInfo.School.SearchSchoolResult
+import com.wk.mediate.ui.Register.SelectInfo.School.SearchUniversityResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

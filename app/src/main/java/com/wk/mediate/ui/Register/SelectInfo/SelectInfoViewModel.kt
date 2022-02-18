@@ -1,10 +1,10 @@
-package com.wk.mediate.ui.Register.Search
+package com.wk.mediate.ui.Register.SelectInfo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.wk.mediate.repository.SearchSchoolRepository
 
-class SearchSchoolViewModel : ViewModel() {
+class SelectInfoViewModel : ViewModel() {
     private val repository = SearchSchoolRepository()
 
     private val getSchoolResult: LiveData<List<String>>

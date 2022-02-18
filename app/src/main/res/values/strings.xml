@@ -44,5 +44,9 @@
     <string name="input_id_hint">6~12자 영문,숫자로 입력해 주세요</string>
     <string name="input_password_hint">영문 대소문자, 숫자, 특수문자를 혼합해 주세요</string>
     <string name="input_re_password_hint">비밀번호를 다시 입력해 주세요</string>
-    <string name="search_school">학교/학년 입력</string>
+    <string name="select_info_school">학교/학년 입력</string>
+    <string name="select_info_univ">학교/학과/학년 입력</string>
+    <string name="select_info_now_school">재학중인 학교</string>
+    <string name="select_info_now_univ">재학중인 대학교</string>
+    <string name="search_school">학교 검색</string>
 </resources>

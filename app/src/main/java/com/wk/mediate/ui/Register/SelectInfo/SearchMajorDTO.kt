@@ -1,4 +1,4 @@
-package com.wk.mediate.ui.Register.Search
+package com.wk.mediate.ui.Register.SelectInfo
 
 data class SearchMajorResult(
         var dataSearch: MajorDataSearch? = null
