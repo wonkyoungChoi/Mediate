@@ -1,4 +1,4 @@
-package com.wk.mediate.ui.Register.SelectInfo.School
+package com.wk.mediate.ui.Register.Select.School.Search
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

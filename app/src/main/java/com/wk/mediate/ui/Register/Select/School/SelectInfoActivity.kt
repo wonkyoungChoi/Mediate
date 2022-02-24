@@ -1,4 +1,4 @@
-package com.wk.mediate.ui.Register.SelectInfo
+package com.wk.mediate.ui.Register.Select.School
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,9 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.wk.mediate.R
 import com.wk.mediate.databinding.ActivitySelectInfoBinding
-import com.wk.mediate.ui.Register.RegisterInfo
-import com.wk.mediate.ui.Register.SelectInfo.School.SearchSchoolActivity
-import com.wk.mediate.ui.Register.SelectTypeActivity
+import com.wk.mediate.ui.Register.Select.School.Search.SearchSchoolActivity
 
 
 class SelectInfoActivity : AppCompatActivity() {
@@ -26,7 +24,7 @@ class SelectInfoActivity : AppCompatActivity() {
     private lateinit var items: ArrayList<String>
     //    private val name : String? = intent.getStringExtra("name")
 //    private val phoneNum : String? = intent.getStringExtra("phoneNum")
-    private val type : String = "tutee"
+    private val type : String = "tutor"
     //intent.getStringExtra("type")!!
 
     override fun onCreate(savedInstanceState: Bundle?) {

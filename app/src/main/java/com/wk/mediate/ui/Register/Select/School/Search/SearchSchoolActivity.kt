@@ -1,4 +1,4 @@
-package com.wk.mediate.ui.Register.SelectInfo.School
+package com.wk.mediate.ui.Register.Select.School.Search
 
 import android.R
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.wk.mediate.databinding.ActivitySearchSchoolBinding
-import com.wk.mediate.ui.Register.SelectInfo.SelectInfoViewModel
+import com.wk.mediate.ui.Register.Select.School.SelectInfoViewModel
 
 
 class SearchSchoolActivity : AppCompatActivity() {

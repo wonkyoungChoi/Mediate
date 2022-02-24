@@ -49,4 +49,6 @@
     <string name="select_info_now_school">재학중인 학교</string>
     <string name="select_info_now_univ">재학중인 대학교</string>
     <string name="search_school">학교 검색</string>
+    <string name="input_area">튜터링 지역 입력</string>
+    <string name="input_area_question">튜터링이 가능한\n지역을 선택해 주세요</string>
 </resources>

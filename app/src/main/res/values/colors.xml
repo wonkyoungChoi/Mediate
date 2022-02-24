@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_blue">#0070FF</color>
+    <color name="main_blue_tab">#CC0070FF</color>
     <color name="edit_stroke">#E0E0E0</color>
     <color name="text_grey">#9E9E9E</color>
     <color name="red">#EF2B2A</color>

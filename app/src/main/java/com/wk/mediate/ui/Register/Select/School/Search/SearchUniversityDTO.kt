@@ -1,4 +1,4 @@
-package com.wk.mediate.ui.Register.SelectInfo.School
+package com.wk.mediate.ui.Register.Select.School.Search
 
 data class SearchUniversityResult(
         var dataSearch: DataSearch? = null
