@@ -13,15 +13,18 @@ import androidx.annotation.FontRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.wk.mediate.R
 import com.wk.mediate.databinding.ActivityInputAreaBinding
+import com.wk.mediate.ui.Register.Select.Area.SelectAreaAdapter
 import com.wk.mediate.ui.Register.Select.Area.SelectAreaViewModel
 
 
 class SelectAreaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputAreaBinding
     private lateinit var model : SelectAreaViewModel
+    private lateinit var adapter: SelectAreaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,9 @@ class SelectAreaActivity : AppCompatActivity() {
         model.loadDo("*00000000")
         observeDoResult()
         initTabLayout()
+
+        observeSiGunGuResult()
+        initSiGunGuRecyclerView()
     }
 
     private fun addTab(text: String) {
@@ -68,10 +74,10 @@ class SelectAreaActivity : AppCompatActivity() {
                 when (tab.position) {
 
 
-//                    0 -> {
-//                        Log.d("Click", "Click")
-//                        tab.text = "공지사항"
-//                    }
+                    0 -> {
+                        Log.d("Click", "Click")
+                        model.loadSiGunGu("11*000000")
+                    }
 //                    1 -> {
 //                        tab.text = "학사공지"
 //                    }
@@ -100,5 +106,18 @@ class SelectAreaActivity : AppCompatActivity() {
         val typeface = Typeface.defaultFromStyle(fontFamilyRes)
         tabTextView.setTextColor(ContextCompat.getColor(this, textColor))
         tabTextView.typeface = typeface
+    }
+
+    private fun initSiGunGuRecyclerView() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = SelectAreaAdapter()
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun observeSiGunGuResult() {
+        model.getSiGunGuResult().observe(this, {
+            adapter.setList(it)
+            adapter.notifyDataSetChanged()
+        })
     }
 }

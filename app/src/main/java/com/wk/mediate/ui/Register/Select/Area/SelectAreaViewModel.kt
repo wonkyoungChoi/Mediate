@@ -18,14 +18,14 @@ class SelectAreaViewModel : ViewModel() {
         return getDoResult
     }
 
-    private val getSiGunGuResult: LiveData<List<String>>
+    private val getSiGunGuResult: LiveData<List<AreaItem>>
         get() = repository._siGunGuResult
 
     fun loadSiGunGu(search: String){
         repository.loadSiGunGuResult(search)
     }
 
-    fun getSiGunGuResult(): LiveData<List<String>> {
+    fun getSiGunGuResult(): LiveData<List<AreaItem>> {
         return getSiGunGuResult
     }
 

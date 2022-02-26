@@ -6,6 +6,7 @@ import com.wk.mediate.BuildConfig
 import com.wk.mediate.network.AreaApi
 import com.wk.mediate.network.SchoolApi
 import com.wk.mediate.network.UniversityApi
+import com.wk.mediate.ui.Register.Select.Area.AreaItem
 import com.wk.mediate.ui.Register.Select.Area.SelectAreaResult
 import com.wk.mediate.ui.Register.Select.School.Search.SearchMajorResult
 import com.wk.mediate.ui.Register.Select.School.Search.SearchSchoolResult
@@ -16,7 +17,7 @@ import retrofit2.Response
 
 class SelectAreaRepository {
     var _doResult = MutableLiveData<List<String>>()
-    var _siGunGuResult = MutableLiveData<List<String>>()
+    var _siGunGuResult = MutableLiveData<List<AreaItem>>()
     var _dongResult = MutableLiveData<List<String>>()
 
     fun loadDoResult(search: String) {
@@ -29,9 +30,7 @@ class SelectAreaRepository {
 
                 if (list != null) {
                     for(i in list.regcodes.indices) {
-                        if(list.regcodes[i].name.contains("북") || list.regcodes[i].name.contains("남")) {
-                            items.add(list.regcodes[i].name[0] + list.regcodes[i].name[2].toString())
-                        } else items.add(list.regcodes[i].name.substring(0, 2))
+                        items.add(reName(list.regcodes[i].name))
                     }
                 }
                 _doResult.value = items
@@ -48,12 +47,14 @@ class SelectAreaRepository {
 
         call.enqueue(object : Callback<SelectAreaResult> {
             override fun onResponse(call: Call<SelectAreaResult>, response: Response<SelectAreaResult>) {
-                val items = ArrayList<String>()
+                val items = ArrayList<AreaItem>()
                 val list: SelectAreaResult? = response.body()
 
                 if (list != null) {
                     for(i in list.regcodes.indices) {
-                        items.add(list.regcodes[i].name)
+                        if(i == 0) {
+                            items.add(AreaItem(reName(list.regcodes[i].name) + " 전체"))
+                        } else items.add(AreaItem(list.regcodes[i].name.replace(list.regcodes[0].name, "").trim()))
                     }
                 }
                 _siGunGuResult.value = items
@@ -85,6 +86,12 @@ class SelectAreaRepository {
                 t.printStackTrace()
             }
         })
+    }
+
+    private fun reName(name: String): String {
+        return if(name.contains("북") || name.contains("남")) {
+            name[0] + name[2].toString()
+        } else name.substring(0, 2)
     }
 
 }

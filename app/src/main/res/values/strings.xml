@@ -51,4 +51,7 @@
     <string name="search_school">학교 검색</string>
     <string name="input_area">튜터링 지역 입력</string>
     <string name="input_area_question">튜터링이 가능한\n지역을 선택해 주세요</string>
+    <string name="input_area_select">선택 지역</string>
+    <string name="input_area_check">지역은 최대 5개까지 설정이 가능합니다.</string>
+    <string name="input_area_limit">&#160;/ 5</string>
 </resources>
