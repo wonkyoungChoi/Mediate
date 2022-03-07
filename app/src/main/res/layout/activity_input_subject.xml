@@ -60,7 +60,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/input_major_question"
+        android:text="@string/input_subject_question"
         android:textSize="24sp"
         android:textColor="@color/black"
         android:layout_marginStart="16dp"
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:textColor="@color/auth_grey"
-        android:text="@string/input_major_info"
+        android:text="@string/input_subject_info"
         android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"/>
 
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView_major"
+        android:id="@+id/autoCompleteTextView_subject"
         android:background="@drawable/login_edit_change"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -106,16 +106,16 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView_major" />
+        app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView_subject" />
 
     <ImageView
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/research"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/autoCompleteTextView_major"
-        app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextView_major"
-        app:layout_constraintTop_toTopOf="@+id/autoCompleteTextView_major"
+        app:layout_constraintBottom_toBottomOf="@+id/autoCompleteTextView_subject"
+        app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextView_subject"
+        app:layout_constraintTop_toTopOf="@+id/autoCompleteTextView_subject"
         android:layout_marginEnd="16dp" />
 
     <androidx.appcompat.widget.AppCompatButton
