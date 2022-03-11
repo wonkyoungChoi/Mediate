@@ -4,9 +4,10 @@
     package="com.wk.mediate">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -14,10 +15,13 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Mediate"
         tools:targetApi="m">
-        <activity android:name=".ui.Register.Select.Subject.SelectSubjectActivity">
+
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="c496bf603e6bc59c520c86b9e25d5cbe"/>
+
+        <activity android:name=".ui.Register.Select.SelectAreaActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,7 +32,7 @@
         <activity android:name=".ui.Login.LoginActivity"/>
         <activity android:name=".ui.Register.Select.School.Search.SearchSchoolActivity"/>
         <activity android:name=".ui.Register.Select.School.SelectInfoActivity"/>
-        <activity android:name=".ui.Register.Select.SelectAreaActivity"/>
+        <activity android:name=".ui.Register.Select.Subject.SelectSubjectActivity"/>
     </application>
 
 

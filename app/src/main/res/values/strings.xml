@@ -50,11 +50,14 @@
     <string name="select_info_now_univ">재학중인 대학교</string>
     <string name="search_school">학교 검색</string>
     <string name="input_area">튜터링 지역 입력</string>
-    <string name="input_area_question">튜터링이 가능한\n지역을 선택해 주세요</string>
-    <string name="input_area_select">선택 지역</string>
-    <string name="input_area_check">지역은 최대 5개까지 설정이 가능합니다.</string>
+    <string name="select_area_now">현재 위치</string>
+    <string name="select_area_juso">경기 ~~시 ~~구 ~~로</string>
+    <string name="select_area_1km">1km 이내</string>
+    <string name="select_area_3km">3km</string>
+    <string name="select_area_5km">5km</string>
     <string name="input_area_limit">&#160;/ 5</string>
     <string name="input_subject_question">자신잇는 것을 알려주세요!</string>
     <string name="input_subject_info">교육 가능한 과목/전공/프로그램을 입력해 주세요.</string>
+
 
 </resources>
