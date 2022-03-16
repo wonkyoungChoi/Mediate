@@ -15,16 +15,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 import com.gun0912.tedpermission.provider.TedPermissionProvider.context
+import com.wk.mediate.BuildConfig
 import com.wk.mediate.R
 import com.wk.mediate.databinding.ActivitySelectAreaBinding
 import com.wk.mediate.ui.Register.Select.Area.SelectAreaViewModel
-import net.daum.mf.map.api.MapCircle
-import net.daum.mf.map.api.MapPOIItem
-import net.daum.mf.map.api.MapPoint
-import net.daum.mf.map.api.MapView
+import net.daum.mf.map.api.*
 
 
-class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventListener, MapView.MapViewEventListener  {
+class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventListener, MapView.MapViewEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener  {
     private lateinit var binding: ActivitySelectAreaBinding
     private lateinit var model : SelectAreaViewModel
     private val currentLocationMarker: MapPOIItem = MapPOIItem()
@@ -55,50 +53,13 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
 
     }
 
-    inner class SeekBarChangeListener: SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-            Log.d("RADIUS", progress.toString())
-            circleRadius = (progress + 1) * 1000
-            when (progress) {
-                0 -> binding.tv1km.setTextColor(ContextCompat.getColor(applicationContext, R.color.main_blue))
-                2 -> binding.tv3km.visibility = View.VISIBLE
-                4 -> binding.tv5km.setTextColor(ContextCompat.getColor(applicationContext, R.color.main_blue))
-                else -> {
-                    binding.tv1km.setTextColor(ContextCompat.getColor(applicationContext, R.color.dark_grey))
-                    binding.tv3km.visibility = View.GONE
-                    binding.tv5km.setTextColor(ContextCompat.getColor(applicationContext, R.color.dark_grey))
-                }
-            }
-
-            val circle1 = MapCircle(
-                    MapPoint.mapPointWithGeoCoord(centerPoint.mapPointGeoCoord.latitude,
-                            centerPoint.mapPointGeoCoord.longitude),  // center
-                    circleRadius,  // radius
-                    Color.argb(255, 0, 112, 255),  // strokeColor
-                    Color.argb(30, 0, 112, 255) // fillColor
-            )
-
-            binding.mvKakaoMap.removeAllCircles()
-            binding.mvKakaoMap.addCircle(circle1)
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-        }
-
-        override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-        }
-
-    }
-
-
     // 위치 권한 확인
     private fun permissionCheck() {
         val preference = getPreferences(MODE_PRIVATE)
         val isFirstCheck = preference.getBoolean("isFirstPermissionCheck", true)
 
         val permissionlistener: PermissionListener = object : PermissionListener {
+            //권한 허용했을 경우
             override fun onPermissionGranted() {
                 if(isFirstCheck) {
                     Toast.makeText(context, "권한이 허용되었습니다.", Toast.LENGTH_SHORT).show()
@@ -109,6 +70,7 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
                 }
             }
 
+            //권한 거부했을 경우
             override fun onPermissionDenied(deniedPermissions: List<String?>) {
                 Toast.makeText(context, "권한이 거부되었습니다.\n$deniedPermissions", Toast.LENGTH_SHORT).show()
             }
@@ -131,7 +93,6 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
 
     // 위치추적 시작
     private fun startTracking() {
-        binding.mvKakaoMap.setZoomLevel(4, true)
         binding.mvKakaoMap.setCurrentLocationEventListener(this@SelectAreaActivity)
         binding.mvKakaoMap.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
     }
@@ -139,15 +100,17 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
     // 위치추적 중지
     private fun stopTracking() {
         binding.mvKakaoMap.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
+        //현재위치 마커 없애기
         binding.mvKakaoMap.setShowCurrentLocationMarker(false)
         binding.mvKakaoMap.setMapViewEventListener(this@SelectAreaActivity)
         Log.d("stopTracking", "stopTracking")
     }
 
+    //setCurrentLocationEventListener 관련 Override
     override fun onCurrentLocationUpdate(
-            mapView: MapView?,
-            point: MapPoint?,
-            accuracy: Float
+        mapView: MapView?,
+        point: MapPoint?,
+        accuracy: Float
     ) {
         println("point: $point")
         Log.d("currentUpdate", "currentUpdate")
@@ -155,15 +118,16 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
             // 현재 위치 업데이트
             centerPoint = point
             binding.mvKakaoMap.setMapCenterPoint(
-                    MapPoint.mapPointWithGeoCoord(
-                            point.mapPointGeoCoord.latitude,
-                            point.mapPointGeoCoord.longitude
-                    ), false
+                MapPoint.mapPointWithGeoCoord(
+                    point.mapPointGeoCoord.latitude,
+                    point.mapPointGeoCoord.longitude
+                ), false
             )
             currentLocationMarker.moveWithAnimation(point, false)
             currentLocationMarker.alpha = 1f
             mapMarkerAndCircle(mapView, point)
             stopTracking()
+            reverseGeoCoder()
         }
     }
 
@@ -180,6 +144,8 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
     }
 
 
+    //setMapViewEventListener 관련 override
+
     override fun onMapViewInitialized(p0: MapView?) {
     }
 
@@ -188,15 +154,16 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
             // 현재 위치 업데이트
             centerPoint = point
             binding.mvKakaoMap.setMapCenterPoint(
-                    MapPoint.mapPointWithGeoCoord(
-                            point.mapPointGeoCoord.latitude,
-                            point.mapPointGeoCoord.longitude
-                    ), false
+                MapPoint.mapPointWithGeoCoord(
+                    point.mapPointGeoCoord.latitude,
+                    point.mapPointGeoCoord.longitude
+                ), false
             )
             currentLocationMarker.moveWithAnimation(point, false)
             currentLocationMarker.alpha = 1f
             mapMarkerAndCircle(mapView, point)
             binding.mvKakaoMap.setShowCurrentLocationMarker(false)
+            reverseGeoCoder()
         }
     }
 
@@ -230,21 +197,33 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
         }
     }
 
+    override fun onReverseGeoCoderFoundAddress(p0: MapReverseGeoCoder?, addressStr: String?) {
+        binding.tvRealArea.text = addressStr
+    }
+
+    override fun onReverseGeoCoderFailedToFindAddress(p0: MapReverseGeoCoder?) {
+
+    }
+
     private fun mapMarkerAndCircle(mapView: MapView?, point: MapPoint?) {
         if (mapView != null) {
             val circle1 = MapCircle(
-                    MapPoint.mapPointWithGeoCoord(point!!.mapPointGeoCoord.latitude,
-                            point.mapPointGeoCoord.longitude),  // center
-                    circleRadius,  // radius
-                    Color.argb(255, 0, 112, 255),  // strokeColor
-                    Color.argb(30, 0, 112, 255) // fillColor
+                MapPoint.mapPointWithGeoCoord(
+                    point!!.mapPointGeoCoord.latitude,
+                    point.mapPointGeoCoord.longitude
+                ),  // center
+                circleRadius,  // radius
+                Color.argb(255, 0, 112, 255),  // strokeColor
+                Color.argb(30, 0, 112, 255) // fillColor
             )
 
             val marker = MapPOIItem()
             marker.apply {
                 itemName = "지정 위치"
-                mapPoint = MapPoint.mapPointWithGeoCoord(point.mapPointGeoCoord.latitude,
-                        point.mapPointGeoCoord.longitude)
+                mapPoint = MapPoint.mapPointWithGeoCoord(
+                    point.mapPointGeoCoord.latitude,
+                    point.mapPointGeoCoord.longitude
+                )
                 markerType = MapPOIItem.MarkerType.BluePin
                 selectedMarkerType = MapPOIItem.MarkerType.RedPin
             }
@@ -254,7 +233,80 @@ class SelectAreaActivity : AppCompatActivity(), MapView.CurrentLocationEventList
             binding.mvKakaoMap.addPOIItem(marker)
             binding.mvKakaoMap.addCircle(circle1)
             binding.mvKakaoMap.setShowCurrentLocationMarker(false)
+            setCamera(circle1)
         }
+    }
+
+    inner class SeekBarChangeListener: SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            Log.d("RADIUS", progress.toString())
+            circleRadius = (progress + 1) * 1000
+            when (progress) {
+                0 -> binding.tv1km.setTextColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_blue
+                    )
+                )
+                2 -> binding.tv3km.visibility = View.VISIBLE
+                4 -> binding.tv5km.setTextColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_blue
+                    )
+                )
+                else -> {
+                    binding.tv1km.setTextColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.dark_grey
+                        )
+                    )
+                    binding.tv3km.visibility = View.GONE
+                    binding.tv5km.setTextColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.dark_grey
+                        )
+                    )
+                }
+            }
+
+            val circle1 = MapCircle(
+                MapPoint.mapPointWithGeoCoord(
+                    centerPoint.mapPointGeoCoord.latitude,
+                    centerPoint.mapPointGeoCoord.longitude
+                ),  // center
+                circleRadius,  // radius
+                Color.argb(255, 0, 112, 255),  // strokeColor
+                Color.argb(30, 0, 112, 255) // fillColor
+            )
+
+            setCamera(circle1)
+            binding.mvKakaoMap.removeAllCircles()
+            binding.mvKakaoMap.addCircle(circle1)
+        }
+
+        override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+        }
+
+        override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+        }
+
+    }
+
+    private fun reverseGeoCoder() {
+        val reverseGeoCoder = MapReverseGeoCoder(BuildConfig.KAKAO_API_KEY, centerPoint, this, this)
+        reverseGeoCoder.startFindingAddress()
+    }
+
+    private fun setCamera(circle: MapCircle) {
+        // 지도뷰의 중심좌표와 줌레벨을 Circle이 모두 나오도록 조정.
+        val mapPointBound = circle.bound
+        val padding = 100 // px
+        binding.mvKakaoMap.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBound, padding))
     }
 
 

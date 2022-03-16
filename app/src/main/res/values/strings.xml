@@ -51,7 +51,6 @@
     <string name="search_school">학교 검색</string>
     <string name="input_area">튜터링 지역 입력</string>
     <string name="select_area_now">현재 위치</string>
-    <string name="select_area_juso">경기 ~~시 ~~구 ~~로</string>
     <string name="select_area_1km">1km 이내</string>
     <string name="select_area_3km">3km</string>
     <string name="select_area_5km">5km</string>

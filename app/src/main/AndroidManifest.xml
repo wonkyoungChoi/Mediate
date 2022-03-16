@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Mediate"
         tools:targetApi="m">
 
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="c496bf603e6bc59c520c86b9e25d5cbe"/>
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_api_key"/>
 
         <activity android:name=".ui.Register.Select.SelectAreaActivity"
             android:exported="true">

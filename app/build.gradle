@@ -6,6 +6,7 @@ plugins {
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def kakaoMapApiKey = properties.getProperty('kakao_api_key')
 
 android {
     compileSdkVersion 30
@@ -21,6 +22,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "SCHOOL_API_KEY", properties["school_api_key"]
         buildConfigField "String", "UNIVERSITY_API_KEY", properties["university_api_key"]
+        buildConfigField "String", "KAKAO_API_KEY", kakaoMapApiKey
+        resValue("string", "kakao_api_key", kakaoMapApiKey)
+
     }
 
     buildTypes {
