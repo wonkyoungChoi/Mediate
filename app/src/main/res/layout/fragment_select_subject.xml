@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/back_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/select_subject"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" >
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/select_subject_question1"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/tv_name"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/select_subject_question2"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/auth_grey"
+                android:text="@string/select_subject_info"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+
+
+            <ImageView
+                android:id="@+id/iv_school1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/school"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+
+            <TextView
+                android:id="@+id/elementary_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/elementary_subject"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_school1"
+                app:layout_constraintStart_toEndOf="@+id/iv_school1"
+                app:layout_constraintTop_toTopOf="@+id/iv_school1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_elementary_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_school1"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_school2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/school"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_elementary_subject"/>
+
+            <TextView
+                android:id="@+id/middle_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/middle_subject"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_school2"
+                app:layout_constraintStart_toEndOf="@+id/iv_school2"
+                app:layout_constraintTop_toTopOf="@+id/iv_school2" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_middle_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_school2"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_school3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/school"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_middle_subject"/>
+
+            <TextView
+                android:id="@+id/high_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/high_subject"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_school3"
+                app:layout_constraintStart_toEndOf="@+id/iv_school3"
+                app:layout_constraintTop_toTopOf="@+id/iv_school3" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_high_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_school3"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_entrance_exam"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/entrance_exam"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_high_subject"/>
+
+            <TextView
+                android:id="@+id/entrance_exam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/entrance_exam"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_entrance_exam"
+                app:layout_constraintStart_toEndOf="@+id/iv_entrance_exam"
+                app:layout_constraintTop_toTopOf="@+id/iv_entrance_exam" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_entrance_exam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_entrance_exam"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="16dp" />
+
+
+            <ImageView
+                android:id="@+id/iv_computer"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/computer"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_entrance_exam"/>
+
+            <TextView
+                android:id="@+id/computer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/computer"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_computer"
+                app:layout_constraintStart_toEndOf="@+id/iv_computer"
+                app:layout_constraintTop_toTopOf="@+id/iv_computer" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_computer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_computer"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_foreign_language"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/foreign_language"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_computer"/>
+
+            <TextView
+                android:id="@+id/foreign_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/foreign_language"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_foreign_language"
+                app:layout_constraintStart_toEndOf="@+id/iv_foreign_language"
+                app:layout_constraintTop_toTopOf="@+id/iv_foreign_language" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_foreign_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_foreign_language"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_instrument"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/music"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_foreign_language"/>
+
+            <TextView
+                android:id="@+id/instrument"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/instrument"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_instrument"
+                app:layout_constraintStart_toEndOf="@+id/iv_instrument"
+                app:layout_constraintTop_toTopOf="@+id/iv_instrument" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_instrument"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_instrument"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="16dp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_next_inactive"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/register_next_inactive"
+                android:padding="10dp"
+                android:text="다음"
+                android:textColor="#9E9E9E"
+                android:textSize="16sp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_instrument"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_next_active"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/register_next_active"
+                android:padding="10dp"
+                android:text="다음"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_instrument"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

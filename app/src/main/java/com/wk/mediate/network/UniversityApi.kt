@@ -14,11 +14,11 @@ interface UniversityInfoService {
                   @Query("contentType") type: String, @Query("gubun") gubun: String, @Query("searchSchulNm") search: String): Call<SearchUniversityResult>
 }
 
-interface MajorInfoService {
-    @GET("cnet/openapi/getOpenApi/")
-    fun loadMajor(@Query("apiKey") key: String, @Query("svcType") name: String, @Query("svcCode") school: String,
-                       @Query("contentType") type: String, @Query("gubun") gubun: String, @Query("searchTitle") search: String): Call<SearchMajorResult>
-}
+//interface MajorInfoService {
+//    @GET("cnet/openapi/getOpenApi/")
+//    fun loadMajor(@Query("apiKey") key: String, @Query("svcType") name: String, @Query("svcCode") school: String,
+//                       @Query("contentType") type: String, @Query("gubun") gubun: String, @Query("searchTitle") search: String): Call<SearchMajorResult>
+//}
 
 object UniversityApi {
     private const val baseUrl = "https://www.career.go.kr/"
@@ -32,9 +32,9 @@ object UniversityApi {
                 UniversityInfoService::class.java)
     }
 
-    fun createMajorApi(): MajorInfoService {
-        return retrofit.create(
-                MajorInfoService::class.java
-        )
-    }
+//    fun createMajorApi(): MajorInfoService {
+//        return retrofit.create(
+//                MajorInfoService::class.java
+//        )
+//    }
 }

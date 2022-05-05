@@ -2,15 +2,9 @@ package com.wk.mediate.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.wk.mediate.BuildConfig
 import com.wk.mediate.network.AreaApi
-import com.wk.mediate.network.SchoolApi
-import com.wk.mediate.network.UniversityApi
 import com.wk.mediate.ui.Register.Select.Area.AreaItem
 import com.wk.mediate.ui.Register.Select.Area.SelectAreaResult
-import com.wk.mediate.ui.Register.Select.School.Search.SearchMajorResult
-import com.wk.mediate.ui.Register.Select.School.Search.SearchSchoolResult
-import com.wk.mediate.ui.Register.Select.School.Search.SearchUniversityResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -14,6 +14,11 @@
     <string name="find_id">아이디 찾기</string>
     <string name="reset_password">비밀번호 재설정</string>
     <string name="register">회원가입</string>
+    <string name="register_finish">회원가입 완료</string>
+    <string name="register_finish_desc">회원가입이 완료되었습니다.</string>
+    <string name="register_finish_hint">정보를 입력하면 바로 튜터링을 할 수 있어요</string>
+    <string name="register_finish_input_info">정보 입력하기</string>
+    <string name="register_finish_go_main">메인화면 바로가기</string>
     <string name="auth">본인인증</string>
     <string name="auth_text">계정 도용을 막기 위한 본인 인증 절차입니다.</string>
     <string name="name">이름</string>
@@ -55,8 +60,18 @@
     <string name="select_area_3km">3km</string>
     <string name="select_area_5km">5km</string>
     <string name="input_area_limit">&#160;/ 5</string>
-    <string name="input_subject_question">자신잇는 것을 알려주세요!</string>
-    <string name="input_subject_info">교육 가능한 과목/전공/프로그램을 입력해 주세요.</string>
+    <string name="select_subject">과목/전공/프로그램 입력</string>
+    <string name="select_subject_question1">튜터님이</string>
+    <string name="select_subject_question2">자신있는 것을 알려주세요!</string>
+    <string name="select_subject_info">교육 가능한 과목/전공/프로그램을 입력해 주세요.</string>
+    <string name="elementary_subject">초등 주요과목</string>
+    <string name="middle_subject">중등 주요과목</string>
+    <string name="high_subject">고등 주요과목</string>
+    <string name="entrance_exam">입시</string>
+    <string name="computer">컴퓨터</string>
+    <string name="foreign_language">외국어</string>
+    <string name="instrument">악기</string>
+
 
 
 </resources>

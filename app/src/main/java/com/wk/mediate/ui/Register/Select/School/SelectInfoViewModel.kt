@@ -29,16 +29,4 @@ class SelectInfoViewModel : ViewModel() {
         return getUniversityResult
     }
 
-    private val getMajorResult: LiveData<List<String>>
-        get() = repository._majorResult
-
-    fun loadMajor(search: String) {
-        repository.loadMajorResult(search)
-    }
-
-    fun getMajorResult(): LiveData<List<String>> {
-        return getMajorResult
-    }
-
-
 }

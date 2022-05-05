@@ -2,12 +2,10 @@ package com.wk.mediate.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.Gson
-import com.wk.mediate.network.LoginApi
+import com.wk.mediate.network.BasicAPI
 import com.wk.mediate.ui.Login.Login
 import com.wk.mediate.ui.Login.LoginResult
 import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +20,7 @@ class LoginRepository {
     fun loadLogin(loginData: Login) {
         Log.d("Load", loginData.toString())
 
-        val call = LoginApi.createApi().loadLogin(loginData)
+        val call = BasicAPI.createLoginApi().loadLogin(loginData)
 
         call.enqueue(object : Callback<LoginResult> {
             override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {

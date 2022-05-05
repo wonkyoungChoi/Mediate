@@ -16,4 +16,5 @@
     <color name="text_black">#222222</color>
     <color name="line_grey">#EEEEEE</color>
     <color name="dark_grey">#999999</color>
+    <color name="light_grey">#CCCCCC</color>
 </resources>

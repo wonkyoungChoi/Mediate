@@ -85,39 +85,39 @@ class SearchSchoolRepository {
         })
     }
 
-    fun loadMajorResult(search: String) {
-        val call = UniversityApi.createMajorApi().loadMajor(BuildConfig.UNIVERSITY_API_KEY, "api","MAJOR", "json", "univ_list", search)
-
-        call.enqueue(object : Callback<SearchMajorResult> {
-            override fun onResponse(call: Call<SearchMajorResult>, response: Response<SearchMajorResult>) {
-                Log.d("url", response.raw().toString())
-                val items = ArrayList<String>()
-                val list: SearchMajorResult? = response.body()
-
-                try {
-                    if (list != null && list.dataSearch?.content?.get(0)  != null) {
-                        list.dataSearch!!.content?.forEachIndexed { index, s ->
-                            if (index < 10) {
-                                items.add(s.mClass.toString())
-                            }
-                        }
-                    }
-                } catch (e: NullPointerException) {
-                    Log.d("NullCheck", "NullCheck")
-                } catch (e: IndexOutOfBoundsException) {
-                    items.add("검색한 학과가 없습니다.")
-                    _majorResult.value = items
-                }
-
-                _majorResult.value = items.distinct()
-
-            }
-
-            override fun onFailure(call: Call<SearchMajorResult>, t: Throwable) {
-                t.printStackTrace()
-            }
-
-        })
-    }
+//    fun loadMajorResult(search: String) {
+//        val call = UniversityApi.createMajorApi().loadMajor(BuildConfig.UNIVERSITY_API_KEY, "api","MAJOR", "json", "univ_list", search)
+//
+//        call.enqueue(object : Callback<SearchMajorResult> {
+//            override fun onResponse(call: Call<SearchMajorResult>, response: Response<SearchMajorResult>) {
+//                Log.d("url", response.raw().toString())
+//                val items = ArrayList<String>()
+//                val list: SearchMajorResult? = response.body()
+//
+//                try {
+//                    if (list != null && list.dataSearch?.content?.get(0)  != null) {
+//                        list.dataSearch!!.content?.forEachIndexed { index, s ->
+//                            if (index < 10) {
+//                                items.add(s.mClass.toString())
+//                            }
+//                        }
+//                    }
+//                } catch (e: NullPointerException) {
+//                    Log.d("NullCheck", "NullCheck")
+//                } catch (e: IndexOutOfBoundsException) {
+//                    items.add("검색한 학과가 없습니다.")
+//                    _majorResult.value = items
+//                }
+//
+//                _majorResult.value = items.distinct()
+//
+//            }
+//
+//            override fun onFailure(call: Call<SearchMajorResult>, t: Throwable) {
+//                t.printStackTrace()
+//            }
+//
+//        })
+//    }
 
 }

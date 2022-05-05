@@ -18,21 +18,14 @@
 
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_api_key"/>
 
-        <activity android:name=".ui.Register.Select.SelectAreaActivity"
+        <activity android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".ui.Register.AuthActivity"/>
-        <activity android:name=".ui.Register.SelectTypeActivity"/>
-        <activity android:name=".ui.Register.InputCodeActivity"/>
-        <activity android:name=".ui.Register.InputIdPasswordActivity"/>
-        <activity android:name=".ui.Login.LoginActivity"/>
-        <activity android:name=".ui.Register.Select.School.Search.SearchSchoolActivity"/>
-        <activity android:name=".ui.Register.Select.School.SelectInfoActivity"/>
-        <activity android:name=".ui.Register.Select.Subject.SelectSubjectActivity"/>
     </application>
 
 
