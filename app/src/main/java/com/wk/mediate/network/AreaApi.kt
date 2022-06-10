@@ -1,8 +1,6 @@
 package com.wk.mediate.network
 
-import com.wk.mediate.ui.Login.Login
-import com.wk.mediate.ui.Login.LoginResult
-import com.wk.mediate.ui.Register.Select.Area.SelectAreaResult
+import com.wk.mediate.ui.Register.SelectInfo.Area.SelectAreaResult
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

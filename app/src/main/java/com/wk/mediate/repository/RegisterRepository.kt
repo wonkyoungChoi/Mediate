@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import com.wk.mediate.network.BasicAPI
 import com.wk.mediate.ui.Register.BasicInfo.BasicInfo
 import com.wk.mediate.ui.Register.BasicInfo.RegisterResult
-import com.wk.mediate.ui.Register.Select.SelectInfoTutee
-import com.wk.mediate.ui.Register.Select.SelectInfoTutor
+import com.wk.mediate.ui.Register.SelectInfo.SelectInfoTutee
+import com.wk.mediate.ui.Register.SelectInfo.SelectInfoTutor
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback

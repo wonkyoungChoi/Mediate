@@ -17,4 +17,6 @@
     <color name="line_grey">#EEEEEE</color>
     <color name="dark_grey">#999999</color>
     <color name="light_grey">#CCCCCC</color>
+    <color name="alpha_66_black">#66000000</color>
+    <color name="background_white">#FAFAFA</color>
 </resources>

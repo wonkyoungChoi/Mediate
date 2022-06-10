@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import com.wk.mediate.R
 import com.wk.mediate.base.ViewBindingFragment
+import com.wk.mediate.components.toast.ToastView
 import com.wk.mediate.databinding.FragmentInputIdPasswordBinding
 import com.wk.mediate.extensions.afterTextChanged
 import com.wk.mediate.extensions.focusEditTextChange
@@ -28,6 +30,12 @@ class InputIdPasswordFragment : ViewBindingFragment<FragmentInputIdPasswordBindi
             tvName.text = BasicRegisterInfo.info.name
 
             btNextActive.setAlphaClickable(true)
+            btBack.setAlphaClickable(true)
+
+            //뒤로가기 클릭
+            btBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
 
             etId.focusEditTextChange(requireActivity(), tvHintInputId, getString(R.string.input_id_hint), "아이디")
             etPassword.focusEditTextChange(requireActivity(), tvHintInputPassword, getString(R.string.input_password_hint), "비밀번호")
@@ -59,6 +67,20 @@ class InputIdPasswordFragment : ViewBindingFragment<FragmentInputIdPasswordBindi
                 BasicRegisterInfo.info.password = etPassword.text.toString()
                 model.loadBasicRegister(BasicRegisterInfo.info)
             }
+
+            requireActivity().onBackPressedDispatcher
+                    .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                        override fun handleOnBackPressed() {
+                            if(isEnabled) {
+                                showConfirm(requireContext().getString(R.string.alert_cancel_register), requireContext().getString(R.string.alert_cancel_register_out), requireContext().getString(R.string.confirm) ,{
+                                    isEnabled = false
+                                    moveToRoot()
+                                    Toast.makeText(requireContext(),requireContext().getString(R.string.cancel_register), Toast.LENGTH_SHORT).show()
+                                    BasicRegisterInfo.info = BasicInfo("", "", "", "")
+                                }, requireContext().getString(R.string.cancel), {})
+                            }
+                        }
+                    })
         }
     }
 

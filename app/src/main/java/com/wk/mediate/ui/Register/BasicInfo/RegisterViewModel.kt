@@ -3,8 +3,8 @@ package com.wk.mediate.ui.Register.BasicInfo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.wk.mediate.repository.RegisterRepository
-import com.wk.mediate.ui.Register.Select.SelectInfoTutee
-import com.wk.mediate.ui.Register.Select.SelectInfoTutor
+import com.wk.mediate.ui.Register.SelectInfo.SelectInfoTutee
+import com.wk.mediate.ui.Register.SelectInfo.SelectInfoTutor
 
 class RegisterViewModel : ViewModel() {
     private val registerRepository = RegisterRepository()

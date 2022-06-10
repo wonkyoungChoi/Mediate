@@ -2,11 +2,11 @@ package com.wk.mediate.ui.Register.BasicInfo
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import com.wk.mediate.base.ViewBindingFragment
 import com.wk.mediate.databinding.FragmentRegisterFinishBinding
 import com.wk.mediate.extensions.setAlphaClickable
-import com.wk.mediate.ui.Login.LoginFragment
-import com.wk.mediate.ui.Register.Select.SelectTypeFragment
+import com.wk.mediate.ui.Register.SelectInfo.SelectTypeFragment
 
 class RegisterFinishFragment : ViewBindingFragment<FragmentRegisterFinishBinding>() {
 
@@ -16,18 +16,27 @@ class RegisterFinishFragment : ViewBindingFragment<FragmentRegisterFinishBinding
         binding?.run {
             tvName.text = BasicRegisterInfo.info.name
 
-            btGoMain.setAlphaClickable(true)
-            btInputInfo.setAlphaClickable(true)
+            btBack.setAlphaClickable(true)
+            btStartMediate.setAlphaClickable(true)
+            btSelectInfo.setAlphaClickable(true)
 
-            btInputInfo.setOnClickListener{
+            btSelectInfo.setOnClickListener{
                 val fragment = SelectTypeFragment()
                 pushFragment(fragment)
             }
 
-            btGoMain.setOnClickListener{
-                val fragment = LoginFragment()
-                replaceFragment(fragment)
+            btStartMediate.setOnClickListener{
+                moveToRoot()
             }
+
+            requireActivity().onBackPressedDispatcher
+                    .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                        override fun handleOnBackPressed() {
+                            if(isEnabled) {
+                                moveToRoot()
+                            }
+                        }
+                    })
         }
     }
 }

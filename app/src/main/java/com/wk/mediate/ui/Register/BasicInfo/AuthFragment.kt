@@ -8,12 +8,14 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.wk.mediate.R
 import com.wk.mediate.base.ViewBindingFragment
+import com.wk.mediate.components.toast.ToastView
 import com.wk.mediate.databinding.FragmentAuthBinding
 import com.wk.mediate.extensions.focusEditTextChange
 import com.wk.mediate.extensions.setAlphaClickable
@@ -40,6 +42,7 @@ class AuthFragment : ViewBindingFragment<FragmentAuthBinding>() {
             tvResendAuth.setAlphaClickable(true)
             btAuthCheckActive.setAlphaClickable(true)
             btNextActive.setAlphaClickable(true)
+            btBack.setAlphaClickable(true)
 
             authCodeTimer()
 
@@ -47,6 +50,20 @@ class AuthFragment : ViewBindingFragment<FragmentAuthBinding>() {
             checkboxSet(checkbox2)
             checkboxSet(checkbox3)
             checkboxSet(checkbox4)
+
+            requireActivity().onBackPressedDispatcher
+                    .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                        override fun handleOnBackPressed() {
+                            if(isEnabled) {
+                                showConfirm(requireContext().getString(R.string.alert_cancel_register), requireContext().getString(R.string.alert_cancel_register_out), requireContext().getString(R.string.confirm) ,{
+                                    isEnabled = false
+                                    moveToRoot()
+                                    Toast.makeText(requireContext(),requireContext().getString(R.string.cancel_register), Toast.LENGTH_SHORT).show()
+                                    BasicRegisterInfo.info = BasicInfo("", "", "", "")
+                                }, requireContext().getString(R.string.cancel), {})
+                            }
+                        }
+                    })
 
             onClick()
         }
@@ -78,6 +95,10 @@ class AuthFragment : ViewBindingFragment<FragmentAuthBinding>() {
                 verifyCode(etInputAuthActive.text.toString())
             }
 
+            //뒤로가기 클릭
+            btBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
 
             //다음버튼 클릭
             btNextActive.setOnClickListener {
@@ -214,6 +235,7 @@ class AuthFragment : ViewBindingFragment<FragmentAuthBinding>() {
                             btNextActive.visibility = View.VISIBLE
                             btNextInactive.visibility = View.GONE
                             btAuthCheckActive.isClickable = false
+                            btAuthCheckActive.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_grey))
                             tvTimeLimit.visibility = View.GONE
                         }
 

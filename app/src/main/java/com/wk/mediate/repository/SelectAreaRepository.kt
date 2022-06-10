@@ -1,10 +1,9 @@
 package com.wk.mediate.repository
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.wk.mediate.network.AreaApi
-import com.wk.mediate.ui.Register.Select.Area.AreaItem
-import com.wk.mediate.ui.Register.Select.Area.SelectAreaResult
+import com.wk.mediate.ui.Register.SelectInfo.Area.AreaItem
+import com.wk.mediate.ui.Register.SelectInfo.Area.SelectAreaResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,7 +15,6 @@ class SelectAreaRepository {
 
     fun loadDoResult(search: String) {
         val call = AreaApi.createApi().loadArea(search, "false")
-        Log.d("LoadURL", call.request().url().toString())
         call.enqueue(object : Callback<SelectAreaResult> {
             override fun onResponse(call: Call<SelectAreaResult>, response: Response<SelectAreaResult>) {
                 val items = ArrayList<String>()

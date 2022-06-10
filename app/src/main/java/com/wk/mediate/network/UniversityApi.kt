@@ -1,7 +1,6 @@
 package com.wk.mediate.network
 
-import com.wk.mediate.ui.Register.Select.School.Search.SearchMajorResult
-import com.wk.mediate.ui.Register.Select.School.Search.SearchUniversityResult
+import com.wk.mediate.ui.Register.SelectInfo.School.Search.SearchUniversityResult
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

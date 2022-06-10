@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/profile_container"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/black"
+        >
+        <ImageView
+            android:id="@+id/image_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <View
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/ic_launcher_foreground"
+            android:layout_marginRight="-3dp"
+            android:layout_marginBottom="-3dp"
+            />
+    </FrameLayout>
+
+</LinearLayout>

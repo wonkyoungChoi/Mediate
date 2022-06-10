@@ -1,4 +1,5 @@
 <resources>
+    <string name="default_notification_channel_id">mediate</string>
     <string name="app_name">Mediate</string>
     <string name="title">내 주변 <font color='#0070FF'>튜터&amp;튜티</font>\n만나보러 갈까요??</string>
     <string name="look"><u>보기</u></string>
@@ -16,6 +17,14 @@
     <string name="register">회원가입</string>
     <string name="register_finish">회원가입 완료</string>
     <string name="register_finish_desc">회원가입이 완료되었습니다.</string>
+    <string name="alert_cancel_register">회원가입 중단</string>
+    <string name="alert_cancel_register_out">회원가입을 중단하시겠습니까?</string>
+    <string name="cancel_register">회원가입이 취소되었습니다.</string>
+    <string name="alert_cancel_select_info">추가정보입력 중단</string>
+    <string name="alert_cancel_select_info_out">추가정보 입력을 중단하시겠습니까?</string>
+    <string name="cancel_select_info">추가정보입력이 취소되었습니다.</string>
+    <string name="confirm">확인</string>
+    <string name="cancel">취소</string>
     <string name="register_finish_hint">정보를 입력하면 바로 튜터링을 할 수 있어요</string>
     <string name="register_finish_input_info">정보 입력하기</string>
     <string name="register_finish_go_main">메인화면 바로가기</string>
@@ -53,6 +62,8 @@
     <string name="select_info_univ">학교/학과/학년 입력</string>
     <string name="select_info_now_school">재학중인 학교</string>
     <string name="select_info_now_univ">재학중인 대학교</string>
+    <string name="select_school_question1">님의</string>
+    <string name="select_school_question2">정보를 알려주세요.</string>
     <string name="search_school">학교 검색</string>
     <string name="input_area">튜터링 지역 입력</string>
     <string name="select_area_now">현재 위치</string>
@@ -61,7 +72,9 @@
     <string name="select_area_5km">5km</string>
     <string name="input_area_limit">&#160;/ 5</string>
     <string name="select_subject">과목/전공/프로그램 입력</string>
-    <string name="select_subject_question1">튜터님이</string>
+    <string name="tutor">튜터</string>
+    <string name="tutee">튜티</string>
+    <string name="select_subject_question1">님이</string>
     <string name="select_subject_question2">자신있는 것을 알려주세요!</string>
     <string name="select_subject_info">교육 가능한 과목/전공/프로그램을 입력해 주세요.</string>
     <string name="elementary_subject">초등 주요과목</string>
@@ -71,7 +84,14 @@
     <string name="computer">컴퓨터</string>
     <string name="foreign_language">외국어</string>
     <string name="instrument">악기</string>
-
+    <string name="register_select_finish">본격적으로 튜터링 시작!</string>
+    <string name="register_finish_more_desc">입력해주신 정보로 나에게 맞는 튜터링을 할 수 있어요!</string>
+    <string name="home_desc">좋은 영향을 주는 튜터링은\n"<b>"메디에이트에서"</b>"</string>
+    <string name="popular_subject">현재 커뮤니티에서 인기있는 주제는</string>
+    <string name="end">입니다</string>
+    <string name="go_to_community">커뮤니티보러가기</string>
+    <string name="tutoring_list">튜터링 리스트</string>
+    <string name="community_list">커뮤니티 인기글</string>
 
 
 </resources>

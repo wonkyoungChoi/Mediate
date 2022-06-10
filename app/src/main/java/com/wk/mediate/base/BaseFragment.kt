@@ -1,11 +1,13 @@
 package com.wk.mediate.base
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.wk.mediate.R
+import com.wk.mediate.components.dialog.ButtonCallback
 
 open class BaseFragment: Fragment() {
     var transition: Transition = Transition.None
@@ -17,6 +19,14 @@ open class BaseFragment: Fragment() {
 
     val baseActivity: BaseActivity
         get() = requireActivity() as BaseActivity
+
+    fun addActivity(firstActivity: Activity, secondActivity: Activity, transition:Transition = Transition.Push) {
+        baseActivity.addActivity(firstActivity, secondActivity, transition)
+    }
+
+    fun modalFragment(firstActivity: Activity, secondActivity: Activity) {
+        baseActivity.modalActivity(firstActivity, secondActivity)
+    }
 
     fun pushFragment(fragment: Fragment, container: Int = R.id.fragment_container) {
         baseActivity.pushFragment(fragment, container)
@@ -64,6 +74,40 @@ open class BaseFragment: Fragment() {
 
     fun showKeyboard(ed: EditText) {
         (activity as BaseActivity).showKeyboard(ed)
+    }
+
+
+    fun showAlert(content: String,
+                  confirmTitle:String? = null,
+                  confirmCallback: ButtonCallback? = null) {
+        baseActivity.showAlert(content, confirmTitle, confirmCallback)
+    }
+    fun showAlert(title: String? = null,
+                  content: String,
+                  confirmTitle:String? = null,
+                  confirmCallback: ButtonCallback? = null) {
+        baseActivity.showAlert(title, content, confirmTitle, confirmCallback)
+    }
+
+    fun showConfirm(content: String,
+                    confirmTitle: String? = null,
+                    confirmCallback: ButtonCallback? = null,
+                    cancelTitle: String? = null,
+                    cancelCallback: ButtonCallback? = null) {
+        baseActivity.showConfirm(content, confirmTitle, confirmCallback, cancelTitle, cancelCallback)
+    }
+
+    fun showConfirm(title: String? = null,
+                    content: String,
+                    confirmTitle: String? = null,
+                    confirmCallback: ButtonCallback? = null,
+                    cancelTitle: String? = null,
+                    cancelCallback: ButtonCallback? = null) {
+        baseActivity.showConfirm(title, content, confirmTitle, confirmCallback, cancelTitle, cancelCallback)
+    }
+
+    fun showToast(message: String) {
+        baseActivity.showToast(message)
     }
 
     open fun blockTouch(delay: Long = 400) {

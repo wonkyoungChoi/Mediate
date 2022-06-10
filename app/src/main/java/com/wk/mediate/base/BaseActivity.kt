@@ -3,6 +3,7 @@ package com.wk.mediate.base
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.wk.mediate.R
+import com.wk.mediate.components.dialog.*
+import com.wk.mediate.components.toast.ToastView
 import com.wk.mediate.extensions.util.Delay
 import com.wk.mediate.extensions.KeyboardHeightProvider
 import com.wk.mediate.extensions.util.DPIUtil
@@ -102,7 +105,18 @@ open class BaseActivity : AppCompatActivity() {
         )
     }
 
-    // present
+    fun addActivity(firstActivity: Activity, secondActivity: Activity, transition:Transition = Transition.Push) {
+        blockTouch()
+        val intent = Intent(firstActivity, secondActivity.javaClass)
+        val show = transition.show()
+        overridePendingTransition(show.inAnim, show.outAnim)
+        startActivity(intent)
+    }
+
+    fun modalActivity(firstActivity: Activity, secondActivity: Activity) {
+        addActivity(firstActivity, secondActivity, Transition.Modal)
+    }
+
     fun pushFragment(fragment: Fragment, container: Int = R.id.fragment_container) {
         addFragment(fragment, Transition.Push, container)
     }
@@ -155,6 +169,58 @@ open class BaseActivity : AppCompatActivity() {
 
     fun replacePrevFragment(fragment: Fragment, container: Int = R.id.fragment_container) {
         replaceFragment(fragment, container, Transition.ReplacePrev.show())
+    }
+
+    fun showAlert(
+            content: String,
+            confirmTitle: String? = null,
+            confirmCallback: ButtonCallback? = null,
+    ) {
+        showAlert("알림", content, confirmTitle, confirmCallback)
+    }
+    fun showAlert(
+            title: String? = null,
+            content: String,
+            confirmTitle: String? = null,
+            confirmCallback: ButtonCallback? = null,
+    ) {
+        showConfirm(title, content, confirmTitle, confirmCallback)
+    }
+
+    fun showConfirm(
+            content: String,
+            confirmTitle: String? = null,
+            confirmCallback: ButtonCallback? = null,
+            cancelTitle: String? = null,
+            cancelCallback: ButtonCallback? = null,
+    ) {
+        showConfirm("알림", content, confirmTitle, confirmCallback, cancelTitle, cancelCallback)
+    }
+    fun showConfirm(
+            title: String? = null,
+            content: String,
+            confirmTitle: String? = null,
+            confirmCallback: ButtonCallback? = null,
+            cancelTitle: String? = null,
+            cancelCallback: ButtonCallback? = null,
+    ) {
+
+        val combine = PopupCombine(this)
+
+        val titleView = PopupTitle(this)
+        titleView.setting(title)
+
+        val contentView = PopupTextContent(this)
+        contentView.setting(content)
+
+        val buttonView = PopupButton(this)
+        buttonView.setting(combine, confirmTitle, confirmCallback, cancelTitle, cancelCallback)
+
+        combine.show(arrayListOf(titleView, contentView, buttonView))
+    }
+
+    fun showToast(message: String) {
+        ToastView.show(this, message)
     }
 
     open fun blockTouch(delay: Long = 400) {

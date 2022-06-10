@@ -2,8 +2,11 @@ package com.wk.mediate.ui.Register.BasicInfo
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import com.wk.mediate.R
 import com.wk.mediate.base.ViewBindingFragment
+import com.wk.mediate.components.toast.ToastView
 import com.wk.mediate.databinding.FragmentInputCodeBinding
 import com.wk.mediate.extensions.afterTextChanged
 import com.wk.mediate.extensions.focusEditTextChange
@@ -17,6 +20,7 @@ class InputCodeFragment : ViewBindingFragment<FragmentInputCodeBinding>() {
 
         binding?.run {
             btNextActive.setAlphaClickable(true)
+            btBack.setAlphaClickable(true)
 
             etCode.focusEditTextChange(requireActivity(), tvHintInputCode, getString(R.string.input_code_hint))
             etCode.afterTextChanged {
@@ -29,6 +33,20 @@ class InputCodeFragment : ViewBindingFragment<FragmentInputCodeBinding>() {
                 }
             }
         }
+
+        requireActivity().onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        if(isEnabled) {
+                            showConfirm(requireContext().getString(R.string.alert_cancel_register), requireContext().getString(R.string.alert_cancel_register_out), requireContext().getString(R.string.confirm) ,{
+                                isEnabled = false
+                                moveToRoot()
+                                Toast.makeText(requireContext(),requireContext().getString(R.string.cancel_register), Toast.LENGTH_SHORT).show()
+                                BasicRegisterInfo.info = BasicInfo("", "", "", "")
+                            }, requireContext().getString(R.string.cancel), {})
+                        }
+                    }
+                })
 
         onClick()
     }
@@ -45,6 +63,11 @@ class InputCodeFragment : ViewBindingFragment<FragmentInputCodeBinding>() {
                     tvInputCodeCheck.visibility = View.VISIBLE
                     tvCodeInfo.setMarginTop(70)
                 }
+            }
+
+            //뒤로가기 클릭
+            btBack.setOnClickListener {
+                requireActivity().onBackPressed()
             }
         }
     }
