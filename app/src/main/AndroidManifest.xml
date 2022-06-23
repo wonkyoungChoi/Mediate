@@ -5,9 +5,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
-        android:name="com.wk.mediate.MediateApplication"
+        android:name="com.wk.mediate.present.config.MediateApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,7 +18,7 @@
         android:theme="@style/Theme.Mediate"
         tools:targetApi="m">
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_api_key"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".present.views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +26,8 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".ui.Register.SelectInfo.School.Search.SearchSchoolActivity"/>
-        <activity android:name=".ui.Main.BottomNavMainActivity"/>
+        <activity android:name=".present.views.register.selectInfo.school.search.SearchSchoolActivity"/>
+        <activity android:name=".present.views.main.BottomNavMainActivity"/>
 
         <service
             android:name=".FirebaseMessagingService"
